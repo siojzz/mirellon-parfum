@@ -1,0 +1,88 @@
+/* =========================================================
+   MIRELLON PARFUM — HERO-FX.JS
+   Extra premium hero effects: custom cursor, magnetic buttons,
+   and floating gold particles. Runs only on hover-capable
+   pointer devices; respects prefers-reduced-motion.
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  const hero = document.getElementById("hero-spotlight");
+  if (!hero) return;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* ---------- Floating gold particles ---------- */
+  const particlesWrap = document.getElementById("hero-particles");
+  if (particlesWrap && !prefersReducedMotion) {
+    const COUNT = 22;
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < COUNT; i++) {
+      const p = document.createElement("span");
+      p.className = "hero-particle";
+      const size = (Math.random() * 3 + 2).toFixed(1);
+      const left = (Math.random() * 100).toFixed(1);
+      const duration = (Math.random() * 10 + 12).toFixed(1);
+      const delay = (-(Math.random() * 20)).toFixed(1);
+      const drift = (Math.random() * 60 - 30).toFixed(0);
+      const opacity = (Math.random() * 0.4 + 0.4).toFixed(2);
+      p.style.setProperty("--s", size + "px");
+      p.style.setProperty("--l", left + "%");
+      p.style.setProperty("--dur", duration + "s");
+      p.style.setProperty("--delay", delay + "s");
+      p.style.setProperty("--drift", drift + "px");
+      p.style.setProperty("--op", opacity);
+      frag.appendChild(p);
+    }
+    particlesWrap.appendChild(frag);
+  }
+
+  /* Skip cursor + magnetic buttons on touch devices */
+  if (!hasHover || prefersReducedMotion) return;
+
+  /* ---------- Custom elegant cursor ---------- */
+  const cursor = document.getElementById("custom-cursor");
+  if (cursor) {
+    let mouse = { x: -100, y: -100 };
+    let smooth = { x: -100, y: -100 };
+
+    hero.addEventListener("mouseenter", () => cursor.classList.add("active"));
+    hero.addEventListener("mouseleave", () => cursor.classList.remove("active"));
+    hero.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    const interactive = hero.querySelectorAll("a, button");
+    interactive.forEach((el) => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("hovering"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("hovering"));
+    });
+
+    function cursorLoop() {
+      smooth.x += (mouse.x - smooth.x) * 0.18;
+      smooth.y += (mouse.y - smooth.y) * 0.18;
+      cursor.style.transform = `translate(${smooth.x}px, ${smooth.y}px) translate(-50%, -50%)`;
+      requestAnimationFrame(cursorLoop);
+    }
+    cursorLoop();
+  }
+
+  /* ---------- Magnetic buttons ---------- */
+  const magneticBtns = hero.querySelectorAll(".btn-magnetic");
+  const MAGNETIC_STRENGTH = 0.35;
+
+  magneticBtns.forEach((btn) => {
+    btn.addEventListener("mousemove", (e) => {
+      const rect = btn.getBoundingClientRect();
+      const relX = e.clientX - (rect.left + rect.width / 2);
+      const relY = e.clientY - (rect.top + rect.height / 2);
+      btn.style.transform = `translate(${relX * MAGNETIC_STRENGTH}px, ${relY * MAGNETIC_STRENGTH}px)`;
+    });
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "";
+    });
+  });
+})();

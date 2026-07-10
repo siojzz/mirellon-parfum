@@ -1,0 +1,82 @@
+/* =========================================================
+   MIRELLON PARFUM — ANIMATIONS
+   ========================================================= */
+
+@keyframes loaderFade {
+  0% { opacity: 0; letter-spacing: 10px; }
+  60% { opacity: 1; }
+  100% { opacity: 1; letter-spacing: 6px; }
+}
+
+@keyframes lineSweep {
+  from { width: 0; }
+  to { width: 44px; }
+}
+
+@keyframes floatBottle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.hero-visual img { animation: floatBottle 6s ease-in-out infinite; }
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+.hero-visual .glow { animation: pulseGlow 5s ease-in-out infinite; }
+
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+.scroll-cue .line { animation: scrollDown 2.2s ease-in-out infinite; }
+
+/* Scroll reveal (AOS-style, driven by IntersectionObserver in main.js) */
+[data-aos] {
+  opacity: 0;
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+[data-aos="fade-up"] { transform: translateY(32px); }
+[data-aos="fade-down"] { transform: translateY(-32px); }
+[data-aos="fade-left"] { transform: translateX(32px); }
+[data-aos="fade-right"] { transform: translateX(-32px); }
+[data-aos="zoom-in"] { transform: scale(0.94); }
+[data-aos].in-view { opacity: 1; transform: none; }
+
+/* stagger helper */
+[data-aos-delay="100"] { transition-delay: 0.1s; }
+[data-aos-delay="200"] { transition-delay: 0.2s; }
+[data-aos-delay="300"] { transition-delay: 0.3s; }
+[data-aos-delay="400"] { transition-delay: 0.4s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hero-eyebrow, .hero-sub, .hero-actions {
+  opacity: 0;
+  animation: heroReveal 0.9s var(--ease) forwards;
+}
+.hero-eyebrow { animation-delay: 0.2s; }
+.hero-sub { animation-delay: 0.6s; }
+.hero-actions { animation-delay: 0.8s; }
+
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  [data-aos] { opacity: 1 !important; transform: none !important; }
+}

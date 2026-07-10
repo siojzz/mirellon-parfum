@@ -1,0 +1,87 @@
+/* =========================================================
+   MIRELLON PARFUM — SPOTLIGHT.JS
+   Cursor-following spotlight that reveals a second hero image
+   through a soft circular canvas mask. Vanilla JS version of
+   the "Lithos" reveal mechanic (no React needed).
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  const section = document.getElementById("hero-spotlight");
+  const revealLayer = document.getElementById("hero-reveal");
+  const canvas = document.getElementById("hero-spotlight-canvas");
+  if (!section || !revealLayer || !canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  const SPOTLIGHT_R = 260;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasHover = window.matchMedia("(hover: hover)").matches;
+
+  /* On touch devices or reduced-motion preference, skip the
+     interactive effect entirely and just keep the base image. */
+  if (prefersReducedMotion || !hasHover) {
+    revealLayer.style.display = "none";
+    return;
+  }
+
+  let mouse = { x: -9999, y: -9999 };
+  let smooth = { x: -9999, y: -9999 };
+  let rafId = null;
+
+  function resizeCanvas() {
+    const rect = section.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  function handleMove(e) {
+    const rect = section.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  }
+  function handleLeave() {
+    /* send the spotlight off-canvas so the reveal fades away */
+    mouse.x = -9999;
+    mouse.y = -9999;
+  }
+
+  section.addEventListener("mousemove", handleMove);
+  section.addEventListener("mouseleave", handleLeave);
+
+  function drawMask(x, y) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, SPOTLIGHT_R);
+    gradient.addColorStop(0, "rgba(255,255,255,1)");
+    gradient.addColorStop(0.4, "rgba(255,255,255,1)");
+    gradient.addColorStop(0.6, "rgba(255,255,255,0.75)");
+    gradient.addColorStop(0.75, "rgba(255,255,255,0.4)");
+    gradient.addColorStop(0.88, "rgba(255,255,255,0.12)");
+    gradient.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(x, y, SPOTLIGHT_R, 0, Math.PI * 2);
+    ctx.fill();
+
+    const maskUrl = `url(${canvas.toDataURL()})`;
+    revealLayer.style.maskImage = maskUrl;
+    revealLayer.style.webkitMaskImage = maskUrl;
+  }
+
+  function loop() {
+    smooth.x += (mouse.x - smooth.x) * 0.1;
+    smooth.y += (mouse.y - smooth.y) * 0.1;
+    drawMask(smooth.x, smooth.y);
+    rafId = requestAnimationFrame(loop);
+  }
+  loop();
+
+  /* Clean up if this were ever removed from the DOM dynamically */
+  window.addEventListener("beforeunload", () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    window.removeEventListener("resize", resizeCanvas);
+  });
+})();

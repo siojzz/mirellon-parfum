@@ -1,0 +1,59 @@
+/* =========================================================
+   MIRELLON PARFUM — RESPONSIVE
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero .container { padding-top: 8rem; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+
+  .about-grid { grid-template-columns: 1fr; }
+  .about-visual img { width: 45%; }
+
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .notes-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .modal-content { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile nav breakpoint */
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .header-actions .btn-outline.desktop-only { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  :root { --space-xl: 5rem; --space-lg: 2.6rem; }
+
+  .container { padding: 0 1.2rem; }
+
+  .hero-title { font-size: 2.1rem; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; }
+
+  .why-grid { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: 1fr; }
+  .notes-grid { grid-template-columns: 1fr; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .timeline::before { left: 18px; }
+  .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding: 0 0 2.4rem 3rem; }
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot { left: 12px; right: auto; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+  .modal-box { padding: 1.6rem; max-height: 85vh; overflow-y: auto; }
+
+  .back-to-top { bottom: 1.2rem; right: 1.2rem; width: 42px; height: 42px; }
+
+  .notes-toolbar { flex-direction: column; align-items: stretch; }
+}
