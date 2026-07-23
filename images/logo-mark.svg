@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Mirellon emblem: monogram badge for app icons, social avatars, packaging seals -->
+  <circle cx="60" cy="60" r="56" fill="#f9f6ee"/>
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#c8a96a" stroke-width="1.4"/>
+  <circle cx="60" cy="60" r="41" fill="none" stroke="#c8a96a" stroke-width="0.6" opacity="0.6"/>
+  <text x="60" y="76" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="48" font-weight="600" fill="#1b1712">M</text>
+  <line x1="40" y1="86" x2="80" y2="86" stroke="#c8a96a" stroke-width="1.2"/>
+</svg>

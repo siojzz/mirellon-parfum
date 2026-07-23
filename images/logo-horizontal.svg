@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 140">
+  <!-- Mirellon full lockup: emblem + wordmark, for header, letterhead, social banners -->
+  <circle cx="70" cy="70" r="46" fill="none" stroke="#c8a96a" stroke-width="1.4"/>
+  <circle cx="70" cy="70" r="41" fill="none" stroke="#c8a96a" stroke-width="0.6" opacity="0.6"/>
+  <text x="70" y="86" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="48" font-weight="600" fill="#1b1712">M</text>
+  <line x1="50" y1="98" x2="90" y2="98" stroke="#c8a96a" stroke-width="1.2"/>
+
+  <text x="150" y="80" font-family="Playfair Display, Georgia, serif" font-size="46" font-weight="600" letter-spacing="2" fill="#1b1712">Mirellon<tspan fill="#c8a96a">.</tspan></text>
+  <text x="152" y="103" font-family="Poppins, Helvetica, Arial, sans-serif" font-size="12" letter-spacing="5" fill="#c8a96a">PARFUM</text>
+</svg>

@@ -274,4 +274,102 @@
       link.classList.add("active");
     }
   });
+
+  /* =========================================================
+     PREMIUM UI ENHANCEMENTS
+     Scroll progress bar, animated title underline, cursor
+     spotlight glow on cards, product 3D tilt, and site-wide
+     magnetic buttons (outside the homepage hero, which already
+     has its own richer version in hero-fx.js).
+     ========================================================= */
+
+  const hasHoverFine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const reducedMotionUI = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Scroll Progress Bar ---------- */
+  if (!reducedMotionUI) {
+    const progressBar = document.createElement("div");
+    progressBar.className = "scroll-progress";
+    progressBar.setAttribute("aria-hidden", "true");
+    document.body.appendChild(progressBar);
+
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + "%";
+    }
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+  }
+
+  /* ---------- Section Title Underline Reveal ---------- */
+  const titleTargets = document.querySelectorAll(".section-title");
+  if ("IntersectionObserver" in window && titleTargets.length) {
+    const titleObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            titleObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    titleTargets.forEach((el) => titleObserver.observe(el));
+  } else {
+    titleTargets.forEach((el) => el.classList.add("in-view"));
+  }
+
+  /* ---------- Cursor Spotlight Glow (why-cards, note-cards, shop cards) ---------- */
+  if (hasHoverFine && !reducedMotionUI) {
+    document.querySelectorAll(".why-card, .note-card, body.shop-page .product-card").forEach((el) => {
+      el.addEventListener("mousemove", (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty("--mx", x + "%");
+        el.style.setProperty("--my", y + "%");
+      });
+    });
+  }
+
+  /* ---------- Product Card 3D Tilt ---------- */
+  if (hasHoverFine && !reducedMotionUI) {
+    const TILT_MAX = 7;
+    document.querySelectorAll(".product-media").forEach((media) => {
+      media.addEventListener("mousemove", (e) => {
+        const rect = media.getBoundingClientRect();
+        const relX = (e.clientX - rect.left) / rect.width;
+        const relY = (e.clientY - rect.top) / rect.height;
+        const rotateY = (relX - 0.5) * TILT_MAX * 2;
+        const rotateX = (0.5 - relY) * TILT_MAX * 2;
+        media.classList.add("tilting");
+        media.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      media.addEventListener("mouseleave", () => {
+        media.classList.remove("tilting");
+        media.style.transform = "";
+      });
+    });
+  }
+
+  /* ---------- Magnetic Buttons (site-wide, outside the homepage hero) ---------- */
+  if (hasHoverFine && !reducedMotionUI) {
+    const MAGNETIC_STRENGTH = 0.3;
+    document.querySelectorAll(".btn-magnetic").forEach((btn) => {
+      if (btn.closest("#hero-spotlight")) return; /* hero-fx.js already handles these */
+      btn.addEventListener("mousemove", (e) => {
+        const rect = btn.getBoundingClientRect();
+        const relX = e.clientX - (rect.left + rect.width / 2);
+        const relY = e.clientY - (rect.top + rect.height / 2);
+        btn.style.transform = `translate(${relX * MAGNETIC_STRENGTH}px, ${relY * MAGNETIC_STRENGTH}px)`;
+      });
+      btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "";
+      });
+    });
+  }
 })();
