@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Account Mockup - @garudaumrah (Dark / Light Mode)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        tiktok: {
+                            black: '#010101',
+                            bg: '#121212',
+                            card: '#181818',
+                            cardHover: '#222222',
+                            red: '#FE2C55',
+                            redHover: '#E0264B',
+                            border: '#2F2F2F',
+                            borderLight: '#3F3F3F',
+                            textPrimary: '#FFFFFF',
+                            textSecondary: '#8A8B91',
+                            btnGray: '#262626',
+                            btnGrayHover: '#333333'
+                        },
+                        garuda: {
+                            navy: '#002B66',
+                            blue: '#004F9F',
+                            sky: '#0072CE',
+                            cyan: '#00A3E0',
+                            gold: '#D4AF37',
+                            dark: '#07111E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['TikTokFont', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-page: #010101;
+            --bg-header: #121212;
+            --bg-phone: #010101;
+            --bg-card: #181818;
+            --bg-inner-card: #121212;
+            --phone-border: #222222;
+            --border-color: #2F2F2F;
+            --border-light: #3F3F3F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #8A8B91;
+            --btn-gray-bg: #262626;
+            --btn-gray-hover: #333333;
+            --btn-gray-text: #FFFFFF;
+            --status-bar-bg: rgba(0, 0, 0, 0.85);
+            --status-bar-text: #E2E8F0;
+            --nav-bottom-bg: #000000;
+            --nav-icon-color: #8A8B91;
+            --nav-icon-active: #FFFFFF;
+        }
+
+        html.light {
+            --bg-page: #F8F9FA;
+            --bg-header: #FFFFFF;
+            --bg-phone: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --bg-inner-card: #F1F1F2;
+            --phone-border: #D1D5DB;
+            --border-color: #E2E8F0;
+            --border-light: #CBD5E1;
+            --text-primary: #161823;
+            --text-secondary: #8A8B91;
+            --btn-gray-bg: #F1F1F2;
+            --btn-gray-hover: #E2E8F0;
+            --btn-gray-text: #161823;
+            --status-bar-bg: rgba(255, 255, 255, 0.95);
+            --status-bar-text: #161823;
+            --nav-bottom-bg: #FFFFFF;
+            --nav-icon-color: #8A8B91;
+            --nav-icon-active: #161823;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        /* Phone mockup screen styling */
+        .phone-container {
+            width: 100%;
+            max-width: 412px;
+            height: 850px;
+            border-radius: 46px;
+            border: 11px solid var(--phone-border);
+            box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 163, 224, 0.18), 0 0 35px rgba(254, 44, 85, 0.12);
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg-phone);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 125px;
+            height: 28px;
+            background-color: var(--phone-border);
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 50;
+            transition: background-color 0.25s ease;
+        }
+
+        /* Dynamic classes */
+        .app-bg-header { background-color: var(--bg-header); }
+        .app-bg-card { background-color: var(--bg-card); }
+        .app-bg-inner { background-color: var(--bg-inner-card); }
+        .app-border { border-color: var(--border-color); }
+        .app-text-primary { color: var(--text-primary); }
+        .app-text-secondary { color: var(--text-secondary); }
+        .app-btn-gray {
+            background-color: var(--btn-gray-bg);
+            color: var(--btn-gray-text);
+        }
+        .app-btn-gray:hover {
+            background-color: var(--btn-gray-hover);
+        }
+        .app-status-bar {
+            background-color: var(--status-bar-bg);
+            color: var(--status-bar-text);
+        }
+        .app-nav-bottom {
+            background-color: var(--nav-bottom-bg);
+            color: var(--nav-icon-color);
+        }
+
+        /* TikTok Center Plus Button */
+        .tiktok-create-btn {
+            position: relative;
+            width: 42px;
+            height: 28px;
+            border-radius: 8px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #010101;
+            font-size: 13px;
+            box-shadow: -3px 0 0 #00A3E0, 3px 0 0 #FE2C55;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+        .tiktok-create-btn:hover {
+            transform: scale(1.06);
+        }
+
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-page);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00A3E0;
+        }
+
+        /* Spinning Audio Record */
+        @keyframes discRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .disc-spinning {
+            animation: discRotate 4s linear infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- Top Navigation Header / Dashboard Controller -->
+    <header class="app-bg-header backdrop-blur border-b app-border sticky top-0 z-40 px-4 py-3 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-white border border-garuda-cyan/40 p-1 flex items-center justify-center shadow-md overflow-hidden shadow-garuda-cyan/20">
+                    <img src="../images/garuda_umrah_logo.jpg" alt="Garuda Umrah Logo" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <h1 class="text-sm font-black app-text-primary leading-none">Garuda Indonesia Umrah - TikTok Mockup</h1>
+                        <i class="fa-solid fa-circle-check text-garuda-cyan text-xs"></i>
+                    </div>
+                    <p class="text-xs text-garuda-cyan font-medium mt-0.5">@garudaumrah • 6 Video Kampanye Resmi</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 flex-wrap">
+                <!-- View Switcher Tabs -->
+                <div class="flex items-center app-bg-inner p-1 rounded-xl border app-border text-xs">
+                    <button onclick="setViewMode('phone')" id="btn-view-phone" class="px-3.5 py-1.5 rounded-lg font-bold transition-all bg-tiktok-red text-white shadow shadow-tiktok-red/30">
+                        <i class="fa-solid fa-mobile-screen mr-1.5"></i>Tampilan HP (6 Video)
+                    </button>
+                    <button onclick="setViewMode('desktop')" id="btn-view-desktop" class="px-3.5 py-1.5 rounded-lg font-semibold transition-all app-text-secondary hover:app-text-primary">
+                        <i class="fa-solid fa-table-cells mr-1.5"></i>Tampilan Grid & 6 Briefing
+                    </button>
+                </div>
+
+                <!-- THEME TOGGLE BUTTON (DARK / LIGHT MODE) -->
+                <button onclick="toggleTheme()" id="theme-toggle-btn" class="px-3 py-1.5 rounded-xl border app-border app-bg-inner hover:border-gray-400 text-xs font-bold flex items-center gap-1.5 transition shadow-sm" title="Ubah Mode Tema">
+                    <i class="fa-solid fa-moon text-amber-400" id="theme-icon"></i>
+                    <span id="theme-text">Dark</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto w-full px-4 py-6 flex-grow flex justify-center items-start">
+        
+        <!-- MODE 1: SMARTPHONE TIKTOK MOCKUP (DEFAULT) -->
+        <div id="view-phone-wrapper" class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full">
+            
+            <!-- PHONE FRAME -->
+            <div class="phone-container flex flex-col flex-shrink-0">
+                <div class="phone-notch"></div>
+                
+                <!-- Phone Status Bar -->
+                <div class="app-status-bar pt-2 px-7 pb-1 flex justify-between items-center text-[10px] font-semibold z-40 backdrop-blur">
+                    <span>09:00</span>
+                    <div class="flex items-center space-x-1.5">
+                        <i class="fa-solid fa-signal"></i>
+                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fa-solid fa-battery-full text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- TikTok App Top Navigation Bar -->
+                <div class="px-4 py-2.5 flex justify-between items-center border-b app-border sticky top-0 z-30 app-bg-header">
+                    <button class="text-base app-text-secondary hover:app-text-primary"><i class="fa-solid fa-arrow-left"></i></button>
+                    <div class="text-center">
+                        <div class="font-extrabold text-sm flex items-center justify-center gap-1 app-text-primary">
+                            Garuda Indonesia Umrah
+                            <i class="fa-solid fa-circle-check text-garuda-cyan text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 text-base app-text-primary">
+                        <button class="hover:text-garuda-cyan" title="Notifikasi"><i class="fa-regular fa-bell"></i></button>
+                        <button class="hover:text-garuda-cyan" title="Menu"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+
+                <!-- Scrollable TikTok Profile Body -->
+                <div class="flex-1 overflow-y-auto text-xs">
+                    
+                    <!-- Profile Header Info -->
+                    <div class="p-4 flex flex-col items-center border-b app-border">
+                        <!-- Avatar with Official Garuda Indonesia Umrah Logo -->
+                        <div class="relative mb-2.5">
+                            <div class="w-20 h-20 rounded-full p-[2.5px] bg-gradient-to-tr from-garuda-navy via-garuda-blue to-garuda-cyan">
+                                <div class="w-full h-full rounded-full bg-white p-2 flex items-center justify-center border-2 border-black overflow-hidden shadow-md">
+                                    <img src="../images/garuda_umrah_logo.jpg" alt="Garuda Indonesia Umrah Logo" class="w-full h-full object-contain">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Username & Title -->
+                        <h2 class="font-black text-base flex items-center gap-1.5 app-text-primary">
+                            @garudaumrah
+                            <i class="fa-solid fa-circle-check text-garuda-cyan text-xs"></i>
+                        </h2>
+                        <p class="app-text-secondary text-[11px] font-medium mb-3">@garuda.umrah</p>
+
+                        <!-- TikTok Stats Bar (Mengikuti, Pengikut, Suka) -->
+                        <div class="flex items-center justify-center space-x-6 mb-4 text-center">
+                            <div>
+                                <div class="font-extrabold text-sm app-text-primary">128</div>
+                                <div class="app-text-secondary text-[11px]">Mengikuti</div>
+                            </div>
+                            <div class="w-px h-5 app-border border-l"></div>
+                            <div>
+                                <div class="font-extrabold text-sm app-text-primary">45.2K</div>
+                                <div class="app-text-secondary text-[11px]">Pengikut</div>
+                            </div>
+                            <div class="w-px h-5 app-border border-l"></div>
+                            <div>
+                                <div class="font-extrabold text-sm app-text-primary">218.4K</div>
+                                <div class="app-text-secondary text-[11px]">Suka</div>
+                            </div>
+                        </div>
+
+                        <!-- TikTok Action Buttons (Iconic Red Follow Button) -->
+                        <div class="flex items-center justify-center space-x-2 w-full mb-3.5">
+                            <button class="flex-1 bg-tiktok-red hover:bg-tiktok-redHover text-white font-bold py-2 rounded-md text-xs transition shadow-md shadow-tiktok-red/20">
+                                Ikuti
+                            </button>
+                            <button class="flex-1 app-btn-gray font-semibold py-2 rounded-md text-xs transition border app-border">
+                                Info Rute Umrah
+                            </button>
+                            <button class="w-9 h-8 app-btn-gray rounded-md flex items-center justify-center transition border app-border">
+                                <i class="fa-regular fa-paper-plane text-xs"></i>
+                            </button>
+                        </div>
+
+                        <!-- Bio Section (Umrah Authority & Campaign Slogan) -->
+                        <div class="text-center px-2 space-y-1 text-[11px]">
+                            <p class="font-bold text-garuda-cyan">"Teman Perjalanan Spiritual Ternyamanmu" 🕋 ✈️</p>
+                            <p class="app-text-primary">Akun Resmi Layanan Penerbangan Umrah Garuda Indonesia</p>
+                            <p class="app-text-secondary text-[10px]">Penerbangan Langsung Menuju Jeddah & Madinah</p>
+                            <a href="#" class="inline-flex items-center text-garuda-cyan font-bold text-[10px] gap-1 hover:underline pt-0.5">
+                                <i class="fa-solid fa-link text-[9px]"></i> garuda-indonesia.com/umrah
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- TikTok Tab Navigation (Video Grid / Pinned) -->
+                    <div class="flex border-b app-border app-text-secondary sticky top-0 app-bg-header z-20 text-center font-medium">
+                        <button class="flex-1 py-2.5 app-text-primary border-b-2 border-current flex items-center justify-center gap-1.5 font-bold">
+                            <i class="fa-solid fa-table-cells text-xs"></i>
+                            <span>Video (6)</span>
+                        </button>
+                        <button class="flex-1 py-2.5 hover:app-text-primary flex items-center justify-center gap-1.5 opacity-50">
+                            <i class="fa-regular fa-bookmark text-xs"></i>
+                            <span>Koleksi</span>
+                        </button>
+                        <button class="flex-1 py-2.5 hover:app-text-primary flex items-center justify-center gap-1.5 opacity-50">
+                            <i class="fa-regular fa-heart text-xs"></i>
+                            <span>Disukai</span>
+                        </button>
+                    </div>
+
+                    <!-- 6 Video Grid (3-column layout) -->
+                    <div id="phone-video-grid" class="grid grid-cols-3 gap-0.5 p-0.5">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                </div>
+
+                <!-- TikTok Bottom App Navigation Bar -->
+                <div class="app-nav-bottom border-t app-border px-5 py-2.5 flex justify-between items-center text-[10px] z-30">
+                    <div class="flex flex-col items-center font-bold cursor-pointer" style="color: var(--nav-icon-active)">
+                        <i class="fa-solid fa-house text-base"></i>
+                        <span class="mt-0.5 font-medium">Beranda</span>
+                    </div>
+                    <div class="flex flex-col items-center hover:opacity-80 cursor-pointer">
+                        <i class="fa-solid fa-user-group text-base"></i>
+                        <span class="mt-0.5 font-medium">Teman</span>
+                    </div>
+                    <div class="tiktok-create-btn">
+                        <i class="fa-solid fa-plus font-bold"></i>
+                    </div>
+                    <div class="flex flex-col items-center hover:opacity-80 cursor-pointer">
+                        <i class="fa-regular fa-comment-dots text-base"></i>
+                        <span class="mt-0.5 font-medium">Kotak Masuk</span>
+                    </div>
+                    <div class="flex flex-col items-center hover:opacity-80 cursor-pointer">
+                        <div class="w-5 h-5 rounded-full bg-white border border-gray-400 p-0.5 flex items-center justify-center overflow-hidden">
+                            <img src="../images/garuda_umrah_logo.jpg" alt="Profile" class="w-full h-full object-contain">
+                        </div>
+                        <span class="mt-0.5 font-medium">Profil</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDE PANEL: CONTENT STRATEGY & QUICK PLAY CONTROL -->
+            <div class="flex-1 max-w-xl space-y-4">
+                
+                <!-- Card 1: Account Strategy Summary -->
+                <div class="app-bg-card border app-border rounded-2xl p-5 shadow-lg">
+                    <div class="flex items-center justify-between mb-3 border-b app-border pb-3">
+                        <div>
+                            <span class="bg-garuda-blue/20 text-garuda-cyan border border-garuda-blue/40 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                                Strategi Konten Garuda Umrah
+                            </span>
+                            <h3 class="text-lg font-black app-text-primary mt-1.5">Garuda Indonesia Umrah (@garudaumrah)</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs app-text-secondary block">Total Video</span>
+                            <span class="text-sm font-bold text-garuda-cyan">6 Video Kampanye</span>
+                        </div>
+                    </div>
+
+                    <!-- Signature Opening Sound Banner -->
+                    <div class="app-bg-inner border app-border rounded-xl p-3 flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-garuda-blue/20 text-garuda-cyan flex items-center justify-center text-sm pulse-glow border border-garuda-blue/40">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-garuda-cyan font-extrabold uppercase tracking-widest block">Signature Audio Opening</span>
+                                <p class="text-xs font-semibold app-text-primary">Chime Kabin 0,4s + Sapaan Hangat Spiritual</p>
+                            </div>
+                        </div>
+                        <button onclick="playChimeSound()" class="bg-garuda-blue hover:bg-garuda-sky text-white text-xs font-extrabold px-3.5 py-1.5 rounded-lg transition flex items-center gap-1 shadow-md shadow-garuda-blue/30">
+                            <i class="fa-solid fa-play"></i> Tes Sound
+                        </button>
+                    </div>
+
+                    <!-- Interactive Video Selector / 6 Quick List -->
+                    <h4 class="text-sm font-bold app-text-primary mb-2.5 flex items-center justify-between">
+                        <span>Pilih Konten Video (6 Video Resmi)</span>
+                        <span class="text-xs font-normal app-text-secondary">Klik untuk simulasi</span>
+                    </h4>
+
+                    <div id="quick-video-list" class="space-y-2 max-h-[380px] overflow-y-auto pr-1">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MODE 2: DESKTOP EXPANDED GRID & BATCH SCHEDULE -->
+        <div id="view-desktop-wrapper" class="hidden w-full space-y-6">
+            
+            <!-- Header Filter Bar -->
+            <div class="app-bg-card border app-border p-4 rounded-2xl flex flex-wrap justify-between items-center gap-4 shadow-sm">
+                <div>
+                    <h2 class="text-lg font-extrabold app-text-primary">Bank Konten Video TikTok - @garudaumrah</h2>
+                    <p class="text-xs app-text-secondary">6 Video Mockup Kampanye Umrah Flight Solutions</p>
+                </div>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <button onclick="filterPillar('ALL')" class="pillar-filter-btn active bg-tiktok-red text-white text-xs font-bold px-3.5 py-1.5 rounded-lg">
+                        Semua Video (6)
+                    </button>
+                    <button onclick="filterPillar('Departure')" class="pillar-filter-btn app-btn-gray text-xs font-semibold px-3.5 py-1.5 rounded-lg transition">
+                        Keberangkatan Jakarta
+                    </button>
+                    <button onclick="filterPillar('Kenyamanan')" class="pillar-filter-btn app-btn-gray text-xs font-semibold px-3.5 py-1.5 rounded-lg transition">
+                        Kenyamanan Kabin
+                    </button>
+                    <button onclick="filterPillar('Makkah')" class="pillar-filter-btn app-btn-gray text-xs font-semibold px-3.5 py-1.5 rounded-lg transition">
+                        Makkah & Madinah
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desktop Cards Grid (6 Prominent Cards in 3 Columns) -->
+            <div id="desktop-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Populated via JS -->
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FULLSCREEN TIKTOK VIDEO PLAYER MODAL -->
+    <div id="tiktok-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-2 sm:p-4">
+        <div class="relative w-full max-w-4xl h-[90vh] app-bg-card border app-border rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+            
+            <!-- Close Modal Button -->
+            <button onclick="closeTikTokModal()" class="absolute top-4 right-4 z-50 w-9 h-9 bg-black/80 hover:bg-black text-white rounded-full flex items-center justify-center transition border border-white/20">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- LEFT: SIMULATED TIKTOK VIDEO PLAYER FRAME -->
+            <div class="relative w-full md:w-[400px] h-[55%] md:h-full bg-black flex-shrink-0 flex items-center justify-center overflow-hidden">
+                <!-- Video Image Cover -->
+                <img id="modal-video-img" src="" alt="Video Mockup" class="w-full h-full object-cover">
+                
+                <!-- Video Vignette & Dark Overlays -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/90"></div>
+
+                <!-- Signature Opening Audio Badge Overlay -->
+                <div class="absolute top-4 left-4 right-14 z-20">
+                    <div class="bg-black/80 border border-garuda-cyan/50 backdrop-blur px-3 py-1.5 rounded-xl text-[10px] text-garuda-cyan flex items-center gap-2">
+                        <i class="fa-solid fa-volume-high text-garuda-cyan animate-pulse"></i>
+                        <span class="truncate font-bold">Opening: [Chime 0.4s] "Garuda Indonesia Umrah —"</span>
+                    </div>
+                </div>
+
+                <!-- Right Side TikTok Action Buttons -->
+                <div class="absolute right-3 bottom-12 flex flex-col items-center space-y-4 z-20 text-white text-center">
+                    <div class="relative cursor-pointer">
+                        <div class="w-11 h-11 rounded-full border-2 border-white overflow-hidden bg-white p-1 flex items-center justify-center">
+                            <img src="../images/garuda_umrah_logo.jpg" alt="Garuda Umrah Logo" class="w-full h-full object-contain">
+                        </div>
+                        <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-4 bg-tiktok-red rounded-full flex items-center justify-center text-[9px] font-black">
+                            <i class="fa-solid fa-plus text-white"></i>
+                        </div>
+                    </div>
+
+                    <button onclick="toggleLike(this)" class="flex flex-col items-center group">
+                        <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                            <i class="fa-solid fa-heart text-white hover:text-tiktok-red"></i>
+                        </div>
+                        <span id="modal-like-count" class="text-[10px] font-bold mt-1">12.4K</span>
+                    </button>
+
+                    <button class="flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-comment-dots text-white"></i>
+                        </div>
+                        <span class="text-[10px] font-bold mt-1">380</span>
+                    </button>
+
+                    <button class="flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-bookmark text-white"></i>
+                        </div>
+                        <span class="text-[10px] font-bold mt-1">1.2K</span>
+                    </button>
+
+                    <button class="flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-share text-white"></i>
+                        </div>
+                        <span class="text-[10px] font-bold mt-1">Bagikan</span>
+                    </button>
+
+                    <div class="w-10 h-10 rounded-full bg-black border-2 border-tiktok-border flex items-center justify-center disc-spinning mt-2 shadow-lg shadow-garuda-cyan/20">
+                        <i class="fa-solid fa-music text-[11px] text-garuda-cyan"></i>
+                    </div>
+                </div>
+
+                <!-- Bottom Video Caption Overlay -->
+                <div class="absolute bottom-3 left-3 right-16 z-20 text-white space-y-1.5">
+                    <div class="font-bold text-xs flex items-center gap-1.5">
+                        @garudaumrah
+                        <i class="fa-solid fa-circle-check text-garuda-cyan text-[10px]"></i>
+                        <span class="text-[10px] font-normal text-slate-300">· 2j yang lalu</span>
+                    </div>
+
+                    <p id="modal-video-hook" class="text-xs font-semibold line-clamp-3 leading-relaxed text-slate-100">
+                        <!-- Populated by JS -->
+                    </p>
+
+                    <div class="text-[10px] text-garuda-cyan font-bold">
+                        #GarudaIndonesiaUmrah #TemanPerjalananSpiritual #UmrahFlightSolutions #PenerbanganLangsung
+                    </div>
+
+                    <div class="flex items-center space-x-2 text-[10px] text-slate-300 pt-0.5">
+                        <i class="fa-solid fa-music text-xs text-garuda-cyan"></i>
+                        <span class="truncate font-medium">Suara Asli - Garuda Indonesia Umrah (Chime Kabin)</span>
+                    </div>
+                </div>
+
+                <!-- Video Progress Bar -->
+                <div class="absolute bottom-0 left-0 right-0 h-1 bg-tiktok-border">
+                    <div class="h-full bg-garuda-cyan w-1/3"></div>
+                </div>
+            </div>
+
+            <!-- RIGHT: PRODUCTION BRIEF & SPECS PANEL -->
+            <div class="flex-1 p-5 md:p-6 overflow-y-auto app-bg-card flex flex-col justify-between space-y-4">
+                <div>
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                        <span id="modal-video-pillar" class="bg-garuda-blue/20 text-garuda-cyan border border-garuda-blue/40 text-xs font-bold px-2.5 py-1 rounded-lg">
+                            <!-- Populated JS -->
+                        </span>
+                        <div class="text-right">
+                            <span class="text-[10px] app-text-secondary block uppercase font-bold">Jadwal Tayang</span>
+                            <span id="modal-video-date" class="text-xs font-bold app-text-primary">
+                                <!-- Populated JS -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <h3 id="modal-video-title" class="text-xl font-black app-text-primary mb-2 leading-snug">
+                        <!-- Populated JS -->
+                    </h3>
+
+                    <!-- Full Script Hook Box -->
+                    <div class="app-bg-inner p-4 rounded-xl border app-border my-4">
+                        <span class="text-[10px] font-black text-garuda-cyan uppercase tracking-widest block mb-1">
+                            <i class="fa-solid fa-quote-left mr-1"></i> Script Hook Video (0–3 Detik First Hook)
+                        </span>
+                        <blockquote id="modal-video-fullhook" class="text-sm font-semibold app-text-primary italic leading-relaxed">
+                            <!-- Populated JS -->
+                        </blockquote>
+                    </div>
+
+                    <!-- Technical Specs Grid -->
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="app-bg-inner p-3 rounded-lg border app-border">
+                            <span class="app-text-secondary text-[10px] block mb-0.5">Durasi Konten</span>
+                            <span id="modal-video-duration" class="font-bold app-text-primary"></span>
+                        </div>
+                        <div class="app-bg-inner p-3 rounded-lg border app-border">
+                            <span class="app-text-secondary text-[10px] block mb-0.5">Rasio Produksi</span>
+                            <span id="modal-video-ratio" class="font-bold text-garuda-cyan">Vertical Video (9:16)</span>
+                        </div>
+                        <div class="app-bg-inner p-3 rounded-lg border app-border">
+                            <span class="app-text-secondary text-[10px] block mb-0.5">Lokasi / Setting Shot</span>
+                            <span id="modal-video-shot" class="font-bold app-text-primary"></span>
+                        </div>
+                        <div class="app-bg-inner p-3 rounded-lg border app-border">
+                            <span class="app-text-secondary text-[10px] block mb-0.5">Talent / Pengisi Suara</span>
+                            <span id="modal-video-talent" class="font-bold app-text-primary"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Audio Test & Close -->
+                <div class="pt-4 border-t app-border flex items-center justify-between">
+                    <button onclick="playChimeSound()" class="app-bg-inner hover:border-garuda-cyan text-garuda-cyan text-xs font-bold px-4 py-2 rounded-xl border app-border transition flex items-center gap-2">
+                        <i class="fa-solid fa-volume-high"></i> Putar Signature Chime
+                    </button>
+                    <button onclick="closeTikTokModal()" class="bg-tiktok-red hover:bg-tiktok-redHover text-white font-bold text-xs px-5 py-2 rounded-xl transition">
+                        Tutup Preview
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-bg-header border-t app-border py-4 px-4 text-center text-xs app-text-secondary">
+        Garuda Indonesia Umrah Official TikTok Mockup &copy; 2026. Teman Perjalanan Spiritual Ternyamanmu.
+    </footer>
+
+    <!-- JAVASCRIPT DATA & INTERACTION LOGIC (6 VIDEO LENGKAP & THEME TOGGLE) -->
+    <script>
+        // Theme Toggle Controller
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fa-solid fa-sun text-amber-500';
+                themeText.innerText = 'Light';
+                localStorage.setItem('garuda_theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-moon text-amber-400';
+                themeText.innerText = 'Dark';
+                localStorage.setItem('garuda_theme', 'dark');
+            }
+        }
+
+        // Apply saved theme on page load
+        (function initTheme() {
+            const saved = localStorage.getItem('garuda_theme');
+            if (saved === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                setTimeout(() => {
+                    const themeIcon = document.getElementById('theme-icon');
+                    const themeText = document.getElementById('theme-text');
+                    if (themeIcon && themeText) {
+                        themeIcon.className = 'fa-solid fa-sun text-amber-500';
+                        themeText.innerText = 'Light';
+                    }
+                }, 50);
+            }
+        })();
+
+        // 6 Total Video Mockups for TikTok
+        const videoData = [
+            {
+                id: 1,
+                title: "Keberangkatan Nyaman Gate F3 Soekarno-Hatta",
+                date: "Senin, 10 Ags (09:00 WIB)",
+                pillar: "Departure",
+                hook: "Begini alur ruang tunggu & keberangkatan khusus jamaah Umrah Garuda Indonesia di Gate F3 Soetta.",
+                fullHook: "Garuda Indonesia Umrah, informasi hari ini — Mengawali perjalanan suci dengan ketertiban dan kenyamanan ekstra di Gate F3 Terminal 2F Jakarta.",
+                duration: "45 Detik",
+                shot: "Gate F3 Lounge, Boarding Desk, Pesawat di Apron",
+                talent: "Petugas Ground Handling & Kru Garuda",
+                views: "94.2K",
+                likes: "14.8K",
+                pinned: true,
+                image: "../images/garuda_umrah_gate_jakarta.jpg"
+            },
+            {
+                id: 2,
+                title: "Teman Perjalanan Spiritual Ternyamanmu di Udara",
+                date: "Rabu, 12 Ags (09:00 WIB)",
+                pillar: "Kenyamanan",
+                hook: "Sembilan jam perjalanan spiritual menuju Tanah Suci. Begini kenyamanan kabin khusus jamaah Garuda Indonesia.",
+                fullHook: "Garuda Indonesia Umrah, informasi hari ini — Sembilan jam perjalanan spiritual menuju Tanah Suci. Begini kenyamanan kabin khusus jamaah Garuda Indonesia.",
+                duration: "45 Detik",
+                shot: "Kabin Wide-Body Executive, Inflight Meal Halal & Seat Pitch",
+                talent: "Kru Kabin & Purser Garuda Indonesia",
+                views: "124.6K",
+                likes: "21.5K",
+                pinned: true,
+                image: "../images/tiktok_garuda_cabin.jpg"
+            },
+            {
+                id: 3,
+                title: "Kepastian Penerbangan Langsung ke Makkah",
+                date: "Jumat, 14 Ags (09:00 WIB)",
+                pillar: "Makkah",
+                hook: "Ini rute penerbangan langsung menuju Makkah & Madinah dengan kepastian slot landing presisi.",
+                fullHook: "Garuda Indonesia Umrah, informasi hari ini — Ini rute penerbangan langsung menuju Makkah & Madinah dengan kepastian slot landing presisi.",
+                duration: "50 Detik",
+                shot: "Apron, Cockpit & Aerial View Makkah Clock Tower",
+                talent: "Captain Pilot & Flight Operations",
+                views: "89.4K",
+                likes: "16.9K",
+                pinned: false,
+                image: "../images/tiktok_garuda_makkah.jpg"
+            },
+            {
+                id: 4,
+                title: "Pendaratan Aman Armada Wide-Body di Apron",
+                date: "Minggu, 16 Ags (09:00 WIB)",
+                pillar: "Departure",
+                hook: "Alhamdulillah mendarat selamat di Tanah Suci didampingi armada Boeing 777 & Airbus A330 terbaik.",
+                fullHook: "Garuda Indonesia Umrah, informasi hari ini — Pendaratan mulus di Bandara Internasional Jeddah siap mengantar jamaah menuju Baitullah.",
+                duration: "40 Detik",
+                shot: "Apron Tarmac, Armada Pesawat Garuda & Jamaah Berihram",
+                talent: "Ground Staff & Jamaah Indonesia",
+                views: "78.5K",
+                likes: "15.3K",
+                pinned: false,
+                image: "../images/garuda_umrah_apron.jpg"
+            },
+            {
+                id: 5,
+                title: "Perjalanan Spiritual Penuh Berkah di Madinah",
+                date: "Selasa, 18 Ags (09:00 WIB)",
+                pillar: "Makkah",
+                hook: "Suasana syahdu senja di Masjid Nabawi Madinah. Momen ziarah Raudhah penuh ketenangan.",
+                fullHook: "Garuda Indonesia Umrah, informasi hari ini — Melangkahkan kaki dengan penuh kekhusyukan di pelataran Masjid Nabawi Madinah.",
+                duration: "55 Detik",
+                shot: "Pelataran Masjid Nabawi, Kubah Hijau, & Payung Madinah",
+                talent: "Voiceover Spiritual & Jamaah Umrah",
+                views: "112.8K",
+                likes: "19.8K",
+                pinned: false,
+                image: "../images/garuda_umrah_madinah_dusk.jpg"
+            },
+            {
+                id: 6,
+                title: "Momen Ibadah Terbaik Bersama Keluarga Tercinta",
+                date: "Kamis, 20 Ags (09:00 WIB)",
+                pillar: "Kenyamanan",
+                hook: "Momen tak ternilai: Bahagianya beribadah bersama seluruh keluarga tercinta di pelataran Masjid Nabawi.",
+                fullHook: "Garuda Indonesia Umrah, informasi hari ini — Bersama Garuda Indonesia, wujudkan impian ibadah Umrah keluarga dengan aman dan nyaman.",
+                duration: "50 Detik",
+                shot: "Keluarga Berjalan Bahagia di Masjid Nabawi Madinah",
+                talent: "Keluarga Jamaah Indonesia",
+                views: "145.2K",
+                likes: "24.1K",
+                pinned: false,
+                image: "../images/garuda_umrah_family_nabawi.jpg"
+            }
+        ];
+
+        // Initialize Render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPhoneGrid(videoData);
+            renderQuickList(videoData);
+            renderDesktopCards(videoData);
+        });
+
+        // Set View Mode (Phone Frame vs Desktop Expanded Grid)
+        function setViewMode(mode) {
+            const phoneWrap = document.getElementById('view-phone-wrapper');
+            const desktopWrap = document.getElementById('view-desktop-wrapper');
+            const btnPhone = document.getElementById('btn-view-phone');
+            const btnDesktop = document.getElementById('btn-view-desktop');
+
+            if(mode === 'phone') {
+                phoneWrap.classList.remove('hidden');
+                desktopWrap.classList.add('hidden');
+                
+                btnPhone.className = "px-3.5 py-1.5 rounded-lg font-bold transition-all bg-tiktok-red text-white shadow shadow-tiktok-red/30";
+                btnDesktop.className = "px-3.5 py-1.5 rounded-lg font-semibold transition-all app-text-secondary hover:app-text-primary";
+            } else {
+                phoneWrap.classList.add('hidden');
+                desktopWrap.classList.remove('hidden');
+
+                btnDesktop.className = "px-3.5 py-1.5 rounded-lg font-bold transition-all bg-tiktok-red text-white shadow shadow-tiktok-red/30";
+                btnPhone.className = "px-3.5 py-1.5 rounded-lg font-semibold transition-all app-text-secondary hover:app-text-primary";
+            }
+        }
+
+        // Render TikTok Grid inside Phone (6 Video Grid)
+        function renderPhoneGrid(items) {
+            const container = document.getElementById('phone-video-grid');
+            container.innerHTML = items.map(item => `
+                <div onclick="openTikTokModal(${item.id})" class="relative aspect-[3/4] app-bg-inner cursor-pointer group overflow-hidden border app-border">
+                    <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    
+                    ${item.pinned ? `
+                        <span class="absolute top-1 left-1 bg-tiktok-red text-white text-[8px] font-black px-1.5 py-0.5 rounded">
+                            PINNED
+                        </span>
+                    ` : ''}
+
+                    <div class="absolute bottom-1.5 left-1.5 right-1.5 text-white flex items-center justify-between text-[10px] font-bold">
+                        <span class="flex items-center gap-1 text-slate-100">
+                            <i class="fa-regular fa-play text-[9px]"></i> ${item.views}
+                        </span>
+                        <span class="text-[8px] text-garuda-cyan font-bold truncate max-w-[55px]">
+                            ${item.pillar}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Quick Selector List (Side Panel)
+        function renderQuickList(items) {
+            const container = document.getElementById('quick-video-list');
+            container.innerHTML = items.map(item => `
+                <div onclick="openTikTokModal(${item.id})" class="p-2.5 app-bg-inner hover:border-garuda-cyan border app-border rounded-xl cursor-pointer transition flex items-center justify-between group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-14 rounded-lg overflow-hidden flex-shrink-0 app-bg-card relative border app-border">
+                            <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                <i class="fa-solid fa-play text-[10px] text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-[9px] font-bold text-garuda-cyan uppercase">
+                                ${item.pillar}
+                            </span>
+                            <h5 class="text-xs font-bold app-text-primary leading-snug line-clamp-1">${item.title}</h5>
+                            <p class="text-[10px] app-text-secondary">${item.date}</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right app-text-secondary group-hover:text-garuda-cyan text-xs transition mr-1"></i>
+                </div>
+            `).join('');
+        }
+
+        // Render Desktop Cards (6 Video Grid)
+        function renderDesktopCards(items) {
+            const container = document.getElementById('desktop-cards-grid');
+            container.innerHTML = items.map(item => `
+                <div onclick="openTikTokModal(${item.id})" class="app-bg-card border app-border rounded-2xl overflow-hidden hover:border-garuda-cyan/50 transition cursor-pointer flex flex-col justify-between group shadow-lg">
+                    <div>
+                        <div class="relative h-60 bg-black overflow-hidden">
+                            <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <span class="absolute top-3 left-3 text-[11px] font-bold bg-garuda-blue text-white px-2.5 py-1 rounded-md">
+                                ${item.pillar}
+                            </span>
+                            <span class="absolute bottom-3 right-3 bg-black/80 text-white text-[11px] px-2.5 py-1 rounded backdrop-blur font-semibold">
+                                <i class="fa-regular fa-clock mr-1"></i>${item.duration}
+                            </span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <span class="text-xs font-bold text-garuda-cyan block">${item.date}</span>
+                            <h4 class="text-sm font-extrabold app-text-primary leading-snug group-hover:text-garuda-cyan transition line-clamp-1">${item.title}</h4>
+                            <p class="text-xs app-text-secondary italic leading-relaxed line-clamp-2">"${item.hook}"</p>
+                        </div>
+                    </div>
+                    <div class="px-4 py-3 app-bg-inner border-t app-border flex items-center justify-between text-xs">
+                        <span class="app-text-secondary text-[10px] truncate max-w-[170px]"><i class="fa-solid fa-user-tie mr-1"></i>${item.talent}</span>
+                        <span class="text-garuda-cyan font-bold hover:underline text-[11px]">Preview <i class="fa-solid fa-arrow-right text-[9px] ml-1"></i></span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Desktop Cards
+        function filterPillar(pillar) {
+            const buttons = document.querySelectorAll('.pillar-filter-btn');
+            buttons.forEach(btn => {
+                if(btn.innerText.includes(pillar) || (pillar === 'ALL' && btn.innerText.includes('Semua'))) {
+                    btn.className = "pillar-filter-btn active bg-tiktok-red text-white text-xs font-bold px-3.5 py-1.5 rounded-lg";
+                } else {
+                    btn.className = "pillar-filter-btn app-btn-gray text-xs font-semibold px-3.5 py-1.5 rounded-lg transition";
+                }
+            });
+
+            if(pillar === 'ALL') {
+                renderDesktopCards(videoData);
+            } else {
+                const filtered = videoData.filter(item => item.pillar.toLowerCase().includes(pillar.toLowerCase()));
+                renderDesktopCards(filtered);
+            }
+        }
+
+        // Open Modal TikTok Player
+        function openTikTokModal(id) {
+            const item = videoData.find(v => v.id === id);
+            if(!item) return;
+
+            document.getElementById('modal-video-img').src = item.image;
+            document.getElementById('modal-video-pillar').innerText = item.pillar;
+            document.getElementById('modal-video-date').innerText = item.date;
+            document.getElementById('modal-video-title').innerText = item.title;
+            document.getElementById('modal-video-hook').innerText = item.hook;
+            document.getElementById('modal-video-fullhook').innerText = `"${item.fullHook}"`;
+            document.getElementById('modal-video-duration').innerText = item.duration;
+            document.getElementById('modal-video-shot').innerText = item.shot;
+            document.getElementById('modal-video-talent').innerText = item.talent;
+            document.getElementById('modal-like-count').innerText = item.likes;
+
+            document.getElementById('tiktok-modal').classList.remove('hidden');
+
+            // Automatically trigger synthesized chime preview sound
+            playChimeSound();
+        }
+
+        // Close Modal
+        function closeTikTokModal() {
+            document.getElementById('tiktok-modal').classList.add('hidden');
+        }
+
+        // Like Toggle Simulation
+        function toggleLike(btn) {
+            const icon = btn.querySelector('i');
+            if(icon.classList.contains('text-tiktok-red')) {
+                icon.classList.remove('text-tiktok-red');
+                icon.classList.add('text-white');
+            } else {
+                icon.classList.add('text-tiktok-red');
+                icon.classList.remove('text-white');
+            }
+        }
+
+        // Audio Chime Synthesizer
+        function playChimeSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc1 = ctx.createOscillator();
+                const gain1 = ctx.createGain();
+                osc1.type = 'sine';
+                osc1.frequency.value = 659.25;
+                gain1.gain.setValueAtTime(0.3, ctx.currentTime);
+                gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+                osc1.connect(gain1);
+                gain1.connect(ctx.destination);
+                osc1.start();
+                osc1.stop(ctx.currentTime + 0.4);
+
+                setTimeout(() => {
+                    const osc2 = ctx.createOscillator();
+                    const gain2 = ctx.createGain();
+                    osc2.type = 'sine';
+                    osc2.frequency.value = 523.25;
+                    gain2.gain.setValueAtTime(0.3, ctx.currentTime);
+                    gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+                    osc2.connect(gain2);
+                    gain2.connect(ctx.destination);
+                    osc2.start();
+                    osc2.stop(ctx.currentTime + 0.5);
+                }, 200);
+            } catch(e) {
+                console.log("Audio play blocked");
+            }
+        }
+    </script>
+
+</body>
+</html>

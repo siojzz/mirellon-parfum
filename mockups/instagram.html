@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Mockup - @garuda.umrah (Dark / Light Mode)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ig: {
+                            black: '#000000',
+                            elevated: '#121212',
+                            card: '#181818',
+                            hover: '#262626',
+                            border: '#262626',
+                            borderLight: '#363636',
+                            btnSecondary: '#363636',
+                            btnSecondaryHover: '#262626',
+                            primaryText: '#F5F5F5',
+                            secondaryText: '#A8A8A8',
+                            mutedText: '#737373',
+                            blue: '#0095F6',
+                            blueHover: '#1877F2',
+                            red: '#FF3040',
+                            badge: '#0095F6'
+                        },
+                        garuda: {
+                            navy: '#002B66',
+                            blue: '#004F9F',
+                            sky: '#0072CE',
+                            cyan: '#00A3E0',
+                            gold: '#D4AF37',
+                            dark: '#07111E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-page: #000000;
+            --bg-header: #121212;
+            --bg-phone: #000000;
+            --bg-card: #121212;
+            --bg-inner-card: #181818;
+            --phone-border: #262626;
+            --border-color: #262626;
+            --border-light: #363636;
+            --text-primary: #F5F5F5;
+            --text-secondary: #A8A8A8;
+            --text-muted: #737373;
+            --btn-sec-bg: #363636;
+            --btn-sec-hover: #262626;
+            --btn-sec-text: #FFFFFF;
+            --status-bar-bg: rgba(0, 0, 0, 0.9);
+            --status-bar-text: #FFFFFF;
+            --nav-bottom-bg: #000000;
+            --nav-icon-color: #FFFFFF;
+        }
+
+        html.light {
+            --bg-page: #F0F2F5;
+            --bg-header: #FFFFFF;
+            --bg-phone: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --bg-inner-card: #F8F9FA;
+            --phone-border: #D1D5DB;
+            --border-color: #DBDBDB;
+            --border-light: #E5E7EB;
+            --text-primary: #262626;
+            --text-secondary: #737373;
+            --text-muted: #8E8E8E;
+            --btn-sec-bg: #EFEFEF;
+            --btn-sec-hover: #DBDBDB;
+            --btn-sec-text: #000000;
+            --status-bar-bg: rgba(255, 255, 255, 0.95);
+            --status-bar-text: #000000;
+            --nav-bottom-bg: #FFFFFF;
+            --nav-icon-color: #000000;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        /* Dynamic Phone Frame */
+        .phone-container {
+            width: 100%;
+            max-width: 395px;
+            height: 820px;
+            border-radius: 46px;
+            border: 10px solid var(--phone-border);
+            box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 163, 224, 0.15);
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg-phone);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 26px;
+            background-color: var(--phone-border);
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            z-index: 50;
+            transition: background-color 0.25s ease;
+        }
+
+        /* Dynamic Surface Classes */
+        .app-bg-header { background-color: var(--bg-header); }
+        .app-bg-card { background-color: var(--bg-card); }
+        .app-bg-inner { background-color: var(--bg-inner-card); }
+        .app-border { border-color: var(--border-color); }
+        .app-border-light { border-color: var(--border-light); }
+        .app-text-primary { color: var(--text-primary); }
+        .app-text-secondary { color: var(--text-secondary); }
+        .app-text-muted { color: var(--text-muted); }
+        .app-btn-sec {
+            background-color: var(--btn-sec-bg);
+            color: var(--btn-sec-text);
+        }
+        .app-btn-sec:hover {
+            background-color: var(--btn-sec-hover);
+        }
+        .app-status-bar {
+            background-color: var(--status-bar-bg);
+            color: var(--status-bar-text);
+        }
+        .app-nav-bottom {
+            background-color: var(--nav-bottom-bg);
+            color: var(--nav-icon-color);
+        }
+
+        /* Authentic Instagram Gradient Story Ring */
+        .ig-story-gradient {
+            background: linear-gradient(45deg, #FEE411 0%, #FEDB16 10%, #F89B29 25%, #F15245 45%, #D92E7F 70%, #9B36B7 90%, #515ECF 100%);
+        }
+
+        /* Spinning Audio Record for Reels */
+        @keyframes discRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .disc-spinning {
+            animation: discRotate 4s linear infinite;
+        }
+
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-page);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 4px;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- TOP CONTROLLER / NAVIGATION BAR -->
+    <header class="app-bg-header backdrop-blur border-b app-border sticky top-0 z-40 px-4 py-3 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-white border border-garuda-cyan/40 p-1 flex items-center justify-center shadow-md overflow-hidden">
+                    <img src="../images/garuda_umrah_logo.jpg" alt="Garuda Umrah Logo" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <h1 class="text-sm font-bold app-text-primary leading-none">Garuda Indonesia Umrah - Instagram Mockup</h1>
+                        <i class="fa-solid fa-circle-check text-ig-blue text-xs"></i>
+                    </div>
+                    <p class="text-xs app-text-secondary font-normal mt-0.5">@garuda.umrah • 6 Foto/Video Kampanye Resmi</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 flex-wrap">
+                <!-- 3 Master View Switcher Tabs -->
+                <div class="flex items-center app-bg-inner p-1 rounded-xl border app-border text-xs flex-wrap gap-1">
+                    <button onclick="switchMasterView('profile')" id="nav-btn-profile" class="px-3 py-1.5 rounded-lg font-bold transition-all bg-ig-blue text-white shadow">
+                        <i class="fa-solid fa-user mr-1.5"></i>1. Profil (Grid 3:4)
+                    </button>
+                    <button onclick="switchMasterView('post')" id="nav-btn-post" class="px-3 py-1.5 rounded-lg font-semibold transition-all app-text-secondary hover:app-text-primary">
+                        <i class="fa-regular fa-images mr-1.5"></i>2. Postingan Feed
+                    </button>
+                    <button onclick="switchMasterView('reels')" id="nav-btn-reels" class="px-3 py-1.5 rounded-lg font-semibold transition-all app-text-secondary hover:app-text-primary">
+                        <i class="fa-solid fa-clapperboard mr-1.5"></i>3. Reels (9:16)
+                    </button>
+                </div>
+
+                <!-- THEME TOGGLE BUTTON (DARK / LIGHT MODE) -->
+                <button onclick="toggleTheme()" id="theme-toggle-btn" class="px-3 py-1.5 rounded-xl border app-border app-bg-inner hover:app-border-light text-xs font-bold flex items-center gap-1.5 transition shadow-sm" title="Ubah Mode Tema">
+                    <i class="fa-solid fa-moon text-amber-400" id="theme-icon"></i>
+                    <span id="theme-text">Dark</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto w-full px-4 py-6 flex-grow flex justify-center items-start">
+        
+        <!-- ========================================================================= -->
+        <!-- VIEW 1: PROFIL AKUN RESMI (@garuda.umrah) DENGAN 6 POSTINGAN GRID 3:4 -->
+        <!-- ========================================================================= -->
+        <div id="view-profile-section" class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full">
+            
+            <!-- PHONE FRAME: PROFILE OVERVIEW -->
+            <div class="phone-container flex flex-col flex-shrink-0">
+                <div class="phone-notch"></div>
+                
+                <!-- Phone Status Bar -->
+                <div class="app-status-bar pt-2.5 px-6 pb-1 flex justify-between items-center text-[11px] font-semibold z-40 backdrop-blur">
+                    <span>09:00</span>
+                    <div class="flex items-center space-x-1.5 text-[10px]">
+                        <i class="fa-solid fa-signal"></i>
+                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fa-solid fa-battery-full text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Instagram Top Profile Bar -->
+                <div class="px-4 py-2.5 flex justify-between items-center border-b app-border sticky top-0 z-30 app-bg-header">
+                    <div class="flex items-center space-x-1.5 cursor-pointer">
+                        <span class="font-bold text-sm tracking-tight flex items-center gap-1.5 app-text-primary">
+                            garuda.umrah
+                            <i class="fa-solid fa-circle-check text-ig-blue text-[13px]"></i>
+                        </span>
+                        <i class="fa-solid fa-chevron-down text-[10px] app-text-secondary"></i>
+                    </div>
+                    <div class="flex items-center space-x-4 text-base app-text-primary">
+                        <button><i class="fa-regular fa-bell"></i></button>
+                        <button><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                </div>
+
+                <!-- Scrollable Profile Body -->
+                <div class="flex-1 overflow-y-auto text-xs">
+                    
+                    <!-- Profile Header: Avatar & Stats -->
+                    <div class="p-3.5 space-y-3">
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="w-[72px] h-[72px] p-[2px] rounded-full ig-story-gradient">
+                                <div class="w-full h-full rounded-full app-bg-phone p-[2px] overflow-hidden flex items-center justify-center">
+                                    <div class="w-full h-full rounded-full bg-white p-1.5 flex items-center justify-center">
+                                        <img src="../images/garuda_umrah_logo.jpg" alt="Logo" class="w-full h-full object-contain">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-1 flex items-center justify-around text-center">
+                                <div><div class="font-bold text-base app-text-primary">6</div><div class="app-text-secondary text-[11px]">postingan</div></div>
+                                <div><div class="font-bold text-base app-text-primary">45.2K</div><div class="app-text-secondary text-[11px]">pengikut</div></div>
+                                <div><div class="font-bold text-base app-text-primary">128</div><div class="app-text-secondary text-[11px]">mengikuti</div></div>
+                            </div>
+                        </div>
+
+                        <!-- Bio Section -->
+                        <div class="space-y-1 text-[11px] leading-relaxed">
+                            <h2 class="font-bold text-xs app-text-primary">Garuda Indonesia Umrah</h2>
+                            <p class="app-text-secondary text-[10px]">Akun Resmi Layanan Penerbangan Umrah Garuda Indonesia 🇮🇩</p>
+                            <p class="app-text-primary">🕋 <b>"Teman Perjalanan Spiritual Ternyamanmu"</b> ✈️</p>
+                            <p class="app-text-primary">🛫 Penerbangan Langsung Menuju Jeddah & Madinah</p>
+                            <p class="app-text-primary">🧳 Fasilitas Kargo: Bagasi 30kg + 5 Liter Air Zamzam</p>
+                            <a href="#" class="text-ig-blue font-semibold block pt-0.5">garuda-indonesia.com/umrah</a>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex items-center gap-1.5 pt-1">
+                            <button class="flex-1 bg-ig-blue text-white font-semibold py-1.5 rounded-lg text-xs hover:bg-ig-blueHover transition">Ikuti</button>
+                            <button class="flex-1 app-btn-sec font-semibold py-1.5 rounded-lg text-xs transition">Kirim Pesan</button>
+                            <button class="flex-1 app-btn-sec font-semibold py-1.5 rounded-lg text-xs transition">Info Rute</button>
+                        </div>
+
+                        <!-- Story Highlights Tray -->
+                        <div class="pt-1">
+                            <div class="flex items-center space-x-3.5 overflow-x-auto hide-scrollbar py-1">
+                                <div class="flex flex-col items-center space-y-1 cursor-pointer flex-shrink-0">
+                                    <div class="w-13 h-13 rounded-full p-[2px] border app-border flex items-center justify-center">
+                                        <div class="w-11 h-11 rounded-full app-bg-inner flex items-center justify-center text-ig-blue text-base">
+                                            <i class="fa-solid fa-kaaba"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] app-text-primary">Rute Umrah</span>
+                                </div>
+                                <div class="flex flex-col items-center space-y-1 cursor-pointer flex-shrink-0">
+                                    <div class="w-13 h-13 rounded-full p-[2px] border app-border flex items-center justify-center">
+                                        <div class="w-11 h-11 rounded-full app-bg-inner flex items-center justify-center text-ig-blue text-base">
+                                            <i class="fa-solid fa-couch"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] app-text-primary">Kabin Nyaman</span>
+                                </div>
+                                <div class="flex flex-col items-center space-y-1 cursor-pointer flex-shrink-0">
+                                    <div class="w-13 h-13 rounded-full p-[2px] border app-border flex items-center justify-center">
+                                        <div class="w-11 h-11 rounded-full app-bg-inner flex items-center justify-center text-ig-blue text-base">
+                                            <i class="fa-solid fa-plane-arrival"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] app-text-primary">Jeddah & Madinah</span>
+                                </div>
+                                <div class="flex flex-col items-center space-y-1 cursor-pointer flex-shrink-0">
+                                    <div class="w-13 h-13 rounded-full p-[2px] border app-border flex items-center justify-center">
+                                        <div class="w-11 h-11 rounded-full app-bg-inner flex items-center justify-center text-ig-blue text-base">
+                                            <i class="fa-solid fa-suitcase-rolling"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] app-text-primary">Bagasi 30kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Profile Tabs: Grid, Reels, Tagged -->
+                        <div class="flex border-t app-border text-center font-medium pt-1">
+                            <button class="flex-1 py-2 app-text-primary border-b-2 border-current flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-table-cells text-base"></i>
+                            </button>
+                            <button onclick="switchMasterView('reels')" class="flex-1 py-2 app-text-muted hover:app-text-primary flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-clapperboard text-base"></i>
+                            </button>
+                            <button class="flex-1 py-2 app-text-muted hover:app-text-primary flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-id-card-clip text-base"></i>
+                            </button>
+                        </div>
+
+                        <!-- 6 GRID POSTS IN 3:4 PORTRAIT RATIO -->
+                        <div class="pt-1">
+                            <div id="profile-grid-container" class="grid grid-cols-3 gap-1">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Instagram Bottom Navigation Bar -->
+                <div class="app-nav-bottom border-t app-border px-7 py-3 flex justify-between items-center text-lg z-30">
+                    <button class="hover:opacity-70"><i class="fa-solid fa-house"></i></button>
+                    <button class="hover:opacity-70"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="hover:opacity-70"><i class="fa-regular fa-square-plus text-xl"></i></button>
+                    <button onclick="switchMasterView('reels')" class="hover:opacity-70"><i class="fa-solid fa-clapperboard"></i></button>
+                    <div class="w-6 h-6 rounded-full border border-gray-400 overflow-hidden bg-white p-0.5 flex items-center justify-center cursor-pointer">
+                        <img src="../images/garuda_umrah_logo.jpg" alt="Profile" class="w-full h-full object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDE PANEL: 6 CONTENT LIST & QUICK INSPECTION -->
+            <div class="flex-1 max-w-xl space-y-4">
+                <div class="app-bg-card border app-border rounded-2xl p-5 shadow-lg">
+                    <div class="flex items-center justify-between mb-3 border-b app-border pb-3">
+                        <div>
+                            <span class="bg-ig-blue/20 text-ig-blue border border-ig-blue/40 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                                <i class="fa-solid fa-layer-group mr-1"></i> Bank Konten Kampanye (6 Foto/Video)
+                            </span>
+                            <h3 class="text-lg font-bold app-text-primary mt-1.5">Garuda Indonesia Umrah (@garuda.umrah)</h3>
+                        </div>
+                        <span class="app-bg-inner text-xs app-text-secondary border app-border font-semibold px-2.5 py-1 rounded-lg">Rasio Grid 3:4</span>
+                    </div>
+
+                    <p class="text-xs app-text-secondary leading-relaxed mb-3">
+                        Berikut 6 materi resmi kampanye penerbangan Umrah Garuda Indonesia. Klik salah satu untuk melihat preview detail caption dan spesifikasi:
+                    </p>
+
+                    <!-- 6 Post Item List -->
+                    <div id="side-post-list" class="space-y-2.5 max-h-[460px] overflow-y-auto pr-1">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- VIEW 2: MOCKUP POSTINGAN FEED (CAROUSEL MULTI-SLIDE DETAIL) -->
+        <!-- ========================================================================= -->
+        <div id="view-post-section" class="hidden flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full">
+            
+            <!-- PHONE FRAME: INSTAGRAM SINGLE POST / FEED VIEW -->
+            <div class="phone-container flex flex-col flex-shrink-0">
+                <div class="phone-notch"></div>
+                
+                <!-- Phone Status Bar -->
+                <div class="app-status-bar pt-2.5 px-6 pb-1 flex justify-between items-center text-[11px] font-semibold z-40 backdrop-blur">
+                    <span>09:00</span>
+                    <div class="flex items-center space-x-1.5 text-[10px]">
+                        <i class="fa-solid fa-signal"></i>
+                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fa-solid fa-battery-full text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Instagram Post Top Header Bar -->
+                <div class="px-4 py-2.5 flex justify-between items-center border-b app-border sticky top-0 z-30 app-bg-header">
+                    <button onclick="switchMasterView('profile')" class="hover:opacity-70 app-text-primary"><i class="fa-solid fa-arrow-left text-sm"></i></button>
+                    <div class="text-center">
+                        <span class="text-[10px] app-text-secondary uppercase tracking-wider block font-bold">GARUDA INDONESIA UMRAH</span>
+                        <span id="detail-post-top-title" class="font-bold text-xs tracking-tight app-text-primary">Postingan Feed</span>
+                    </div>
+                    <button class="hover:opacity-70 app-text-primary"><i class="fa-solid fa-ellipsis text-sm"></i></button>
+                </div>
+
+                <!-- Scrollable Post View Body -->
+                <div class="flex-1 overflow-y-auto text-xs">
+                    
+                    <!-- Post Author Bar -->
+                    <div class="px-3.5 py-2.5 flex items-center justify-between">
+                        <div class="flex items-center space-x-2.5">
+                            <div class="w-8 h-8 rounded-full bg-white border app-border p-1 flex items-center justify-center overflow-hidden">
+                                <img src="../images/garuda_umrah_logo.jpg" alt="Logo" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-1">
+                                    <span class="font-bold text-xs app-text-primary">garuda.umrah</span>
+                                    <i class="fa-solid fa-circle-check text-ig-blue text-[11px]"></i>
+                                </div>
+                                <span id="detail-post-location" class="text-[10px] app-text-secondary">Makkah & Madinah • Penerbangan Langsung</span>
+                            </div>
+                        </div>
+                        <button class="app-text-secondary hover:app-text-primary"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+
+                    <!-- Post Visual Container (Full Image in 3:4 / Square) -->
+                    <div class="relative w-full aspect-[3/4] app-bg-inner overflow-hidden border-y app-border">
+                        <img id="detail-post-img" src="../images/garuda_umrah_gate_jakarta.jpg" alt="Post Visual" class="w-full h-full object-cover">
+                        
+                        <!-- Carousel Badge Indicator -->
+                        <div id="detail-carousel-badge" class="absolute top-3 right-3 bg-black/75 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur">
+                            1/5
+                        </div>
+
+                        <!-- Sponsor / Campaign Tag Bottom Left -->
+                        <div class="absolute bottom-3 left-3 bg-black/80 border border-white/20 text-white text-[10px] px-2.5 py-1 rounded-md backdrop-blur font-semibold flex items-center gap-1.5">
+                            <i class="fa-solid fa-kaaba text-ig-blue"></i> Umrah Flight Solutions
+                        </div>
+                    </div>
+
+                    <!-- Post Engagement Bar (Likes, Comments, Share, Bookmark) -->
+                    <div class="px-3.5 pt-2.5 pb-1">
+                        <div class="flex items-center justify-between text-lg mb-2 app-text-primary">
+                            <div class="flex items-center space-x-4">
+                                <button onclick="togglePostLike(this)" class="hover:text-ig-red transition">
+                                    <i class="fa-solid fa-heart text-ig-red text-xl"></i>
+                                </button>
+                                <button class="hover:opacity-70 transition">
+                                    <i class="fa-regular fa-comment text-xl"></i>
+                                </button>
+                                <button class="hover:opacity-70 transition">
+                                    <i class="fa-regular fa-paper-plane text-lg"></i>
+                                </button>
+                            </div>
+                            <!-- Carousel Dots Indicator (5 Dots) -->
+                            <div class="flex items-center space-x-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-ig-blue"></span>
+                                <span class="w-1.5 h-1.5 rounded-full app-bg-inner border app-border"></span>
+                                <span class="w-1.5 h-1.5 rounded-full app-bg-inner border app-border"></span>
+                                <span class="w-1.5 h-1.5 rounded-full app-bg-inner border app-border"></span>
+                                <span class="w-1.5 h-1.5 rounded-full app-bg-inner border app-border"></span>
+                            </div>
+                            <button class="hover:opacity-70 transition">
+                                <i class="fa-regular fa-bookmark text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Likes Count -->
+                        <div class="font-bold text-xs app-text-primary mb-1.5">
+                            Disukai oleh <span class="app-text-primary font-bold">sahabat.garuda</span> dan <span id="detail-likes-count">18.420 lainnya</span>
+                        </div>
+
+                        <!-- Caption Body -->
+                        <div class="space-y-1 text-xs leading-relaxed">
+                            <p>
+                                <span class="font-bold app-text-primary mr-1.5">garuda.umrah</span>
+                                <b id="detail-caption-hook">Kenyamanan Keberangkatan dari Terminal 2F Soekarno-Hatta menuju Jeddah & Madinah.</b> 🕋 ✈️
+                            </p>
+                            <p id="detail-caption-body" class="app-text-secondary">
+                                Mengawali perjalanan suci dengan ketenangan dan kepastian. Layanan check-in khusus jamaah Umrah Garuda Indonesia di Gate F3 Soekarno-Hatta menghadirkan alur keberangkatan yang tertib, nyaman, dan ramah keluarga.
+                            </p>
+                            <p id="detail-hashtags" class="text-ig-blue font-medium pt-1">
+                                #GarudaIndonesiaUmrah #Terminal2FJakarta #GateF3Jeddah #TemanPerjalananSpiritual #UmrahGaruda
+                            </p>
+                        </div>
+
+                        <!-- Comments Link & Timestamp -->
+                        <div class="pt-2 text-[11px] app-text-secondary space-y-1 border-t app-border mt-2.5">
+                            <span class="block cursor-pointer hover:app-text-primary">Lihat semua 640 komentar</span>
+                            <span class="text-[10px] app-text-muted uppercase block">1 HARI YANG LALU • LIHAT TERJEMAHAN</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Instagram Bottom Navigation Bar -->
+                <div class="app-nav-bottom border-t app-border px-7 py-3 flex justify-between items-center text-lg z-30">
+                    <button onclick="switchMasterView('profile')" class="hover:opacity-70"><i class="fa-solid fa-house"></i></button>
+                    <button class="hover:opacity-70"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="hover:opacity-70"><i class="fa-regular fa-square-plus text-xl"></i></button>
+                    <button onclick="switchMasterView('reels')" class="hover:opacity-70"><i class="fa-solid fa-clapperboard"></i></button>
+                    <div onclick="switchMasterView('profile')" class="w-6 h-6 rounded-full border border-gray-400 overflow-hidden bg-white p-0.5 flex items-center justify-center cursor-pointer">
+                        <img src="../images/garuda_umrah_logo.jpg" alt="Profile" class="w-full h-full object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDE PANEL: POSTINGAN STRATEGY & SLIDE BREAKDOWN -->
+            <div class="flex-1 max-w-xl space-y-4">
+                <div class="app-bg-card border app-border rounded-2xl p-5 shadow-lg">
+                    <div class="flex items-center justify-between mb-3 border-b app-border pb-3">
+                        <div>
+                            <span id="side-detail-badge" class="bg-ig-blue/20 text-ig-blue border border-ig-blue/40 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                                <i class="fa-regular fa-images mr-1"></i> Postingan Feed (Carousel)
+                            </span>
+                            <h3 id="side-detail-title" class="text-lg font-bold app-text-primary mt-1.5">Keberangkatan Nyaman Terminal 2F</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs app-text-secondary block">Pilar Konten</span>
+                            <span id="side-detail-pillar" class="text-sm font-bold text-ig-blue">Departure Experience</span>
+                        </div>
+                    </div>
+
+                    <!-- Slide Breakdown List -->
+                    <div class="app-bg-inner p-4 rounded-xl border app-border space-y-2 mb-4">
+                        <span class="text-[10px] font-bold text-ig-blue uppercase tracking-widest block">
+                            <i class="fa-solid fa-list-ol mr-1"></i> Rincian Slide Edukasi Konten:
+                        </span>
+                        <div id="side-detail-breakdown" class="text-xs space-y-1.5 app-text-secondary">
+                            <!-- Populated JS -->
+                        </div>
+                    </div>
+
+                    <!-- Navigation to other items -->
+                    <div class="flex items-center justify-between pt-2">
+                        <button onclick="switchMasterView('profile')" class="text-xs app-text-secondary hover:app-text-primary flex items-center gap-1">
+                            &larr; Kembali ke Profil (6 Konten)
+                        </button>
+                        <button onclick="switchMasterView('reels')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-clapperboard"></i> Lihat Mockup Reels &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- VIEW 3: MOCKUP INSTAGRAM REELS (VERTICAL 9:16 PLAYER) -->
+        <!-- ========================================================================= -->
+        <div id="view-reels-section" class="hidden flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full">
+            
+            <!-- PHONE FRAME: INSTAGRAM REELS FULLSCREEN VIEW -->
+            <div class="phone-container flex flex-col flex-shrink-0">
+                <div class="phone-notch"></div>
+                
+                <!-- Phone Status Bar -->
+                <div class="pt-2.5 px-6 pb-1 flex justify-between items-center text-[11px] text-white font-semibold z-40 bg-black/40 backdrop-blur">
+                    <span>09:00</span>
+                    <div class="flex items-center space-x-1.5 text-[10px]">
+                        <i class="fa-solid fa-signal"></i>
+                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fa-solid fa-battery-full text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Fullscreen Reels Simulated Screen -->
+                <div class="relative flex-1 bg-black overflow-hidden flex items-center justify-center">
+                    
+                    <!-- Vertical Reels Video Visual -->
+                    <img id="reels-video-img" src="../images/tiktok_garuda_cabin.jpg" alt="Reels Visual Kabin" class="w-full h-full object-cover">
+                    
+                    <!-- Dark Gradient Overlays for Readability -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
+
+                    <!-- Reels Top Bar (Header + Camera Icon) -->
+                    <div class="absolute top-10 left-4 right-4 flex items-center justify-between text-white z-30">
+                        <span class="font-bold text-base tracking-tight flex items-center gap-1.5 drop-shadow">
+                            Reels
+                            <i class="fa-solid fa-chevron-down text-[10px] text-white/80"></i>
+                        </span>
+                        <button class="text-lg hover:text-white/80"><i class="fa-solid fa-camera"></i></button>
+                    </div>
+
+                    <!-- Right Vertical Reels Action Buttons -->
+                    <div class="absolute right-3 bottom-8 flex flex-col items-center space-y-4 z-30 text-white text-center">
+                        <button onclick="toggleReelsLike(this)" class="flex flex-col items-center group">
+                            <i class="fa-solid fa-heart text-2xl text-ig-red drop-shadow group-hover:scale-110 transition"></i>
+                            <span id="reels-likes-display" class="text-[11px] font-semibold mt-1 drop-shadow">21.5K</span>
+                        </button>
+                        <button class="flex flex-col items-center group">
+                            <i class="fa-regular fa-comment text-2xl text-white drop-shadow group-hover:scale-110 transition"></i>
+                            <span class="text-[11px] font-semibold mt-1 drop-shadow">840</span>
+                        </button>
+                        <button class="flex flex-col items-center group">
+                            <i class="fa-regular fa-paper-plane text-2xl text-white drop-shadow group-hover:scale-110 transition"></i>
+                            <span class="text-[11px] font-semibold mt-1 drop-shadow">3.2K</span>
+                        </button>
+                        <button class="flex flex-col items-center group">
+                            <i class="fa-solid fa-ellipsis text-lg text-white drop-shadow"></i>
+                        </button>
+                        <div class="w-8 h-8 rounded-lg bg-black/70 border border-white/40 p-0.5 flex items-center justify-center disc-spinning shadow-lg overflow-hidden mt-1">
+                            <img src="../images/garuda_umrah_logo.jpg" alt="Music" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+
+                    <!-- Bottom Left Reels Caption Overlay -->
+                    <div class="absolute bottom-4 left-3 right-16 z-30 text-white space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-white border border-white/60 p-0.5 flex items-center justify-center overflow-hidden">
+                                <img src="../images/garuda_umrah_logo.jpg" alt="Logo" class="w-full h-full object-contain">
+                            </div>
+                            <span class="font-bold text-xs text-white drop-shadow flex items-center gap-1">
+                                garuda.umrah
+                                <i class="fa-solid fa-circle-check text-ig-blue text-[11px]"></i>
+                            </span>
+                            <button class="bg-transparent hover:bg-white/20 border border-white/60 text-white font-semibold text-[10px] px-2.5 py-0.5 rounded-md transition backdrop-blur">
+                                Ikuti
+                            </button>
+                        </div>
+                        <p id="reels-caption-text" class="text-xs text-white leading-relaxed line-clamp-2 drop-shadow font-normal">
+                            Sembilan jam perjalanan spiritual menuju Tanah Suci. Begini kenyamanan kabin khusus jamaah Garuda Indonesia...
+                        </p>
+                        <div class="flex items-center space-x-2 text-[10px] text-white/90 drop-shadow">
+                            <i class="fa-solid fa-music text-[9px] animate-pulse"></i>
+                            <span class="truncate font-medium">Suara Asli - Garuda Indonesia Umrah (Kenyamanan Kabin)</span>
+                        </div>
+                    </div>
+
+                    <!-- Reels Progress Line -->
+                    <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-white/30 z-40">
+                        <div class="h-full bg-white w-2/5"></div>
+                    </div>
+                </div>
+
+                <!-- Instagram Bottom Navigation Bar -->
+                <div class="app-nav-bottom border-t app-border px-7 py-3 flex justify-between items-center text-lg z-30">
+                    <button onclick="switchMasterView('profile')" class="hover:opacity-70"><i class="fa-solid fa-house"></i></button>
+                    <button class="hover:opacity-70"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="hover:opacity-70"><i class="fa-regular fa-square-plus text-xl"></i></button>
+                    <button class="hover:opacity-70 text-ig-blue"><i class="fa-solid fa-clapperboard"></i></button>
+                    <div onclick="switchMasterView('profile')" class="w-6 h-6 rounded-full border border-gray-400 overflow-hidden bg-white p-0.5 flex items-center justify-center cursor-pointer">
+                        <img src="../images/garuda_umrah_logo.jpg" alt="Profile" class="w-full h-full object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDE PANEL: REELS STRATEGY & SCRIPT BREAKDOWN -->
+            <div class="flex-1 max-w-xl space-y-4">
+                <div class="app-bg-card border app-border rounded-2xl p-5 shadow-lg">
+                    <div class="flex items-center justify-between mb-3 border-b app-border pb-3">
+                        <div>
+                            <span class="bg-purple-500/20 text-purple-400 border border-purple-500/40 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                                <i class="fa-solid fa-clapperboard mr-1"></i> Format Reels Video (9:16)
+                            </span>
+                            <h3 class="text-lg font-bold app-text-primary mt-1.5">Kenyamanan Perjalanan Jamaah</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs app-text-secondary block">Jadwal Tayang</span>
+                            <span class="text-sm font-bold text-purple-400">Rabu & Jumat</span>
+                        </div>
+                    </div>
+
+                    <!-- Reels Script Hook Box -->
+                    <div class="app-bg-inner p-4 rounded-xl border app-border space-y-2 mb-4">
+                        <span class="text-[10px] font-bold text-purple-400 uppercase tracking-widest block">
+                            <i class="fa-solid fa-film mr-1"></i> Storyboard & Script Audio Reels:
+                        </span>
+                        <div class="text-xs space-y-2 app-text-secondary">
+                            <div class="border-b app-border pb-1.5">
+                                <span class="text-ig-blue font-bold block text-[11px]">00:00 – 00:03 (The Hook):</span>
+                                <i>"Sembilan jam perjalanan spiritual menuju Tanah Suci. Begini rasanya terbang bersama armada terbaik Garuda Indonesia."</i>
+                            </div>
+                            <div class="border-b app-border pb-1.5">
+                                <span class="text-ig-blue font-bold block text-[11px]">00:04 – 00:25 (The Experience):</span>
+                                Menampilkan legroom lega kursi wide-body, suasana tenang kabin untuk dzikir/istirahat, dan penyajian hidangan hangat bersertifikat halal nusantara.
+                            </div>
+                            <div>
+                                <span class="text-ig-blue font-bold block text-[11px]">00:26 – 00:45 (The Resolution & CTA):</span>
+                                Senyum ramah kru kabin mendampingi jamaah hingga landing di Jeddah. <i>"Teman perjalanan spiritual ternyamanmu, Garuda Indonesia."</i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Switch to Profile -->
+                    <div class="flex items-center justify-between pt-2">
+                        <button onclick="switchMasterView('profile')" class="text-xs app-text-secondary hover:app-text-primary flex items-center gap-1">
+                            &larr; Kembali ke Profil (6 Konten)
+                        </button>
+                        <button onclick="switchMasterView('post')" class="bg-ig-blue hover:bg-ig-blueHover text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
+                            <i class="fa-regular fa-images"></i> Lihat Mockup Feed &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-bg-header border-t app-border py-4 px-4 text-center text-xs app-text-muted">
+        Garuda Indonesia Umrah Official Instagram Mockup &copy; 2026. Teman Perjalanan Spiritual Ternyamanmu.
+    </footer>
+
+    <!-- JAVASCRIPT DATA & INTERACTION LOGIC (6 KONTEN LENGKAP & THEME TOGGLE) -->
+    <script>
+        // Theme Toggle Controller
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fa-solid fa-sun text-amber-500';
+                themeText.innerText = 'Light';
+                localStorage.setItem('garuda_theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-moon text-amber-400';
+                themeText.innerText = 'Dark';
+                localStorage.setItem('garuda_theme', 'dark');
+            }
+        }
+
+        // Apply saved theme on page load
+        (function initTheme() {
+            const saved = localStorage.getItem('garuda_theme');
+            if (saved === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                setTimeout(() => {
+                    const themeIcon = document.getElementById('theme-icon');
+                    const themeText = document.getElementById('theme-text');
+                    if (themeIcon && themeText) {
+                        themeIcon.className = 'fa-solid fa-sun text-amber-500';
+                        themeText.innerText = 'Light';
+                    }
+                }, 50);
+            }
+        })();
+
+        // 6 Total Official Garuda Indonesia Umrah Posts
+        const allPostsData = [
+            {
+                id: 1,
+                title: "Keberangkatan Nyaman di Gate F3 Soekarno-Hatta",
+                type: "Carousel",
+                pillar: "Ground & Departure",
+                date: "Senin, 10 Ags",
+                likes: "18.4K",
+                comments: "640",
+                image: "../images/garuda_umrah_gate_jakarta.jpg",
+                location: "Terminal 2F Soekarno-Hatta, Jakarta",
+                hook: "Kenyamanan Keberangkatan dari Terminal 2F Soekarno-Hatta menuju Jeddah & Madinah.",
+                body: "Mengawali perjalanan suci dengan ketenangan dan kepastian. Layanan check-in khusus jamaah Umrah Garuda Indonesia di Gate F3 Soekarno-Hatta menghadirkan alur keberangkatan yang tertib, nyaman, dan ramah keluarga.",
+                hashtags: "#GarudaIndonesiaUmrah #Terminal2FJakarta #GateF3Jeddah #TemanPerjalananSpiritual #UmrahGaruda",
+                breakdown: [
+                    "Slide 1: Ruang tunggu Gate F3 Terminal 2F Jakarta (Garuda Indonesia Umrah to Jeddah)",
+                    "Slide 2: Alur check-in bagasi 30kg khusus jamaah & rombongan travel",
+                    "Slide 3: Fasilitas pendampingan lansia & anak-anak sebelum boarding",
+                    "Slide 4: Pengecekan paspor & boarding pass terpadu",
+                    "Slide 5: CTA cek jadwal penerbangan langsung di bio"
+                ]
+            },
+            {
+                id: 2,
+                title: "Teman Perjalanan Spiritual Ternyamanmu di Udara",
+                type: "Reels",
+                pillar: "Cabin Comfort",
+                date: "Rabu, 12 Ags",
+                likes: "21.5K",
+                comments: "840",
+                image: "../images/tiktok_garuda_cabin.jpg",
+                location: "Inflight Cabin Airbus A330-900neo",
+                hook: "Sembilan jam perjalanan spiritual menuju Tanah Suci. Begini kenyamanan kabin khusus jamaah Garuda Indonesia.",
+                body: "Kenyamanan kabin luas, hidangan hangat nusantara bersertifikat halal, dan pelayanan ramah khas Indonesia mendampingi setiap langkah ibadah jamaah Anda.",
+                hashtags: "#GarudaIndonesiaUmrah #TemanPerjalananSpiritual #KabinGaruda #UmrahNyaman",
+                breakdown: [
+                    "Format: Vertical Video Reels 9:16 (45 Detik)",
+                    "Shot: Kabin Wide-Body Executive, Inflight Meal Halal & Suasana Khusyuk Jamaah",
+                    "Talent: Kru Kabin & Purser Garuda Indonesia"
+                ]
+            },
+            {
+                id: 3,
+                title: "Kepastian Penerbangan Langsung ke Makkah Al-Mukarramah",
+                type: "Carousel",
+                pillar: "Direct Route",
+                date: "Jumat, 14 Ags",
+                likes: "16.9K",
+                comments: "510",
+                image: "../images/tiktok_garuda_makkah.jpg",
+                location: "Makkah Clock Tower & King Abdulaziz Airport",
+                hook: "Menuju Tanah Suci dengan kepastian slot landing dan ketenangan hati.",
+                body: "Garuda Indonesia Umrah Flight Solutions menghadirkan penerbangan langsung tanpa transit dari 5 kota besar Indonesia menuju Jeddah & Madinah. Momen ibadah seumur hidup (*Umrah journey for a lifetime*).",
+                hashtags: "#GarudaIndonesiaUmrah #UmrahJourneyForALifetime #DirectFlightMakkah",
+                breakdown: [
+                    "Slide 1: Cover Pesawat Garuda di atas Makkah Clock Tower",
+                    "Slide 2: Pilihan kota keberangkatan (Jakarta, Surabaya, Solo, Medan, Makassar)",
+                    "Slide 3: On-Time Performance & Slot Landing Presisi",
+                    "Slide 4: Fasilitas angkut 5 Liter Air Zamzam resmi",
+                    "Slide 5: CTA reservasi seat rombongan"
+                ]
+            },
+            {
+                id: 4,
+                title: "Pendaratan Jamaah & Armada Wide-Body di Apron Bandara",
+                type: "Carousel",
+                pillar: "Fleet Operations",
+                date: "Minggu, 16 Ags",
+                likes: "15.3K",
+                comments: "490",
+                image: "../images/garuda_umrah_apron.jpg",
+                location: "Apron Bandara Internasional Jeddah",
+                hook: "Tiba dengan selamat di Tanah Suci didampingi armada wide-body terbaik bangsa.",
+                body: "Deretan armada Boeing 777-300ER dan Airbus A330 Garuda Indonesia bersiap melayani rotasi penerbangan jamaah Umrah dengan standar keselamatan dan ketepatan waktu internasional.",
+                hashtags: "#GarudaIndonesiaUmrah #ApronJeddah #Boeing777Garuda #AirbusA330 #UmrahAman",
+                breakdown: [
+                    "Slide 1: Foto barisan armada Garuda Indonesia & jamaah berihram di apron",
+                    "Slide 2: Penanganan kargo bagasi jamaah yang aman dan terkoordinasi",
+                    "Slide 3: Transportasi darat langsung menuju hotel Makkah/Madinah",
+                    "Slide 4: Tim ground handling Garuda di Arab Saudi"
+                ]
+            },
+            {
+                id: 5,
+                title: "Perjalanan Spiritual Penuh Keberkahan di Madinah",
+                type: "Carousel",
+                pillar: "Spiritual Destination",
+                date: "Selasa, 18 Ags",
+                likes: "19.8K",
+                comments: "720",
+                image: "../images/garuda_umrah_madinah_dusk.jpg",
+                location: "Masjid Nabawi, Madinah Al-Munawwarah",
+                hook: "Suasana syahdu senja di Masjid Nabawi Madinah bersama Garuda Indonesia Umrah.",
+                body: "Melangkahkan kaki dengan penuh kekhusyukan menuju Raudhah dan makam Rasulullah SAW. Jadikan setiap detik ziarah di Madinah sebagai pengalaman spiritual penuh keberkahan.",
+                hashtags: "#GarudaIndonesiaUmrah #MadinahAlMunawwarah #MasjidNabawi #Raudhah #PerjalananSpiritual",
+                breakdown: [
+                    "Slide 1: Cover senja syahdu jamaah menuju Kubah Hijau Masjid Nabawi",
+                    "Slide 2: Keutamaan ibadah di Masjid Nabawi & Raudhah Syarif",
+                    "Slide 3: Tips kenyamanan jamaah lansia selama di Madinah",
+                    "Slide 4: Jadwal rute langsung penerbangan pulang dari Bandara Madinah (MED)"
+                ]
+            },
+            {
+                id: 6,
+                title: "Momen Ibadah Terbaik Bersama Keluarga Tercinta",
+                type: "Reels",
+                pillar: "Family Pilgrimage",
+                date: "Kamis, 20 Ags",
+                likes: "24.1K",
+                comments: "980",
+                image: "../images/garuda_umrah_family_nabawi.jpg",
+                location: "Pelataran Payung Masjid Nabawi",
+                hook: "Momen tak ternilai: Beribadah bersama seluruh anggota keluarga di pelataran Masjid Nabawi.",
+                body: "Senyum bahagia dan langkah penuh syukur keluarga Indonesia menikmati indahnya ibadah Umrah. Bersama Garuda Indonesia, perjalanan ibadah keluarga terasa lebih dekat, nyaman, dan berkesan seumur hidup.",
+                hashtags: "#GarudaIndonesiaUmrah #UmrahKeluarga #MasjidNabawi #TemanPerjalananSpiritual #UmrahBahagia",
+                breakdown: [
+                    "Format: Vertical Video Reels 9:16 (45 Detik)",
+                    "Visual: Momen bahagia keluarga berjalan di pelataran Nabawi dengan senyum hangat",
+                    "Audio: Sapaan hangat dan doa keselamatan keluarga jamaah"
+                ]
+            }
+        ];
+
+        // Initialize Render on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProfileGrid(allPostsData);
+            renderSidePostList(allPostsData);
+            loadPostDetail(allPostsData[0]); // Load first post as default detail
+        });
+
+        // Switch Master View (Profile vs Post Detail vs Reels)
+        function switchMasterView(view) {
+            const postSec = document.getElementById('view-post-section');
+            const reelsSec = document.getElementById('view-reels-section');
+            const profileSec = document.getElementById('view-profile-section');
+
+            const btnPost = document.getElementById('nav-btn-post');
+            const btnReels = document.getElementById('nav-btn-reels');
+            const btnProfile = document.getElementById('nav-btn-profile');
+
+            // Hide all sections
+            postSec.className = "hidden flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full";
+            reelsSec.className = "hidden flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full";
+            profileSec.className = "hidden flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full";
+
+            // Reset all buttons
+            [btnPost, btnReels, btnProfile].forEach(b => {
+                b.className = "px-3 py-1.5 rounded-lg font-semibold transition-all app-text-secondary hover:app-text-primary";
+            });
+
+            // Show selected view
+            if(view === 'profile') {
+                profileSec.className = "flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full";
+                btnProfile.className = "px-3 py-1.5 rounded-lg font-bold transition-all bg-ig-blue text-white shadow";
+            } else if(view === 'post') {
+                postSec.className = "flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full";
+                btnPost.className = "px-3 py-1.5 rounded-lg font-bold transition-all bg-ig-blue text-white shadow";
+            } else if(view === 'reels') {
+                reelsSec.className = "flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full";
+                btnReels.className = "px-3 py-1.5 rounded-lg font-bold transition-all bg-purple-600 text-white shadow";
+            }
+        }
+
+        // Render 6 Grid Items in 3:4 Portrait Ratio
+        function renderProfileGrid(items) {
+            const container = document.getElementById('profile-grid-container');
+            container.innerHTML = items.map(item => `
+                <div onclick="selectAndOpenPost(${item.id})" class="relative aspect-[3/4] app-bg-inner cursor-pointer group overflow-hidden border app-border rounded-sm">
+                    <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    
+                    <!-- Format Badge Top Right -->
+                    <div class="absolute top-1.5 right-1.5 text-white text-[10px] drop-shadow-md">
+                        ${item.type === 'Carousel' ? '<i class="fa-regular fa-images"></i>' : '<i class="fa-solid fa-clapperboard"></i>'}
+                    </div>
+
+                    <!-- Hover Overlay Stats -->
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-[10px] font-bold">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-heart text-ig-red text-[9px]"></i> ${item.likes}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Side Post List (Panel Kanan)
+        function renderSidePostList(items) {
+            const container = document.getElementById('side-post-list');
+            container.innerHTML = items.map(item => `
+                <div onclick="selectAndOpenPost(${item.id})" class="app-bg-inner hover:opacity-90 border app-border p-2.5 rounded-xl cursor-pointer transition flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-black/10 border app-border">
+                            <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition">
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-[9px] font-bold ${item.type === 'Carousel' ? 'text-ig-blue' : 'text-purple-500'} uppercase">
+                                    ${item.type === 'Carousel' ? '<i class="fa-regular fa-images mr-0.5"></i> Carousel' : '<i class="fa-solid fa-clapperboard mr-0.5"></i> Reels'}
+                                </span>
+                                <span class="text-[9px] app-text-secondary">• ${item.date}</span>
+                            </div>
+                            <h4 class="text-xs font-semibold app-text-primary group-hover:text-ig-blue transition line-clamp-1">${item.title}</h4>
+                            <span class="text-[10px] app-text-secondary">${item.pillar}</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right app-text-secondary group-hover:text-ig-blue text-xs transition mr-1"></i>
+                </div>
+            `).join('');
+        }
+
+        // Select and Open Specific Post Detail
+        function selectAndOpenPost(id) {
+            const item = allPostsData.find(p => p.id === id);
+            if(!item) return;
+
+            if(item.type === 'Reels') {
+                document.getElementById('reels-video-img').src = item.image;
+                document.getElementById('reels-caption-text').innerText = item.hook;
+                document.getElementById('reels-likes-display').innerText = item.likes;
+                switchMasterView('reels');
+            } else {
+                loadPostDetail(item);
+                switchMasterView('post');
+            }
+        }
+
+        // Load Post Data into Detail View
+        function loadPostDetail(item) {
+            document.getElementById('detail-post-img').src = item.image;
+            document.getElementById('detail-post-location').innerText = item.location;
+            document.getElementById('detail-likes-count').innerText = `${item.likes} lainnya`;
+            document.getElementById('detail-caption-hook').innerText = item.hook;
+            document.getElementById('detail-caption-body').innerText = item.body;
+            document.getElementById('detail-hashtags').innerText = item.hashtags;
+
+            document.getElementById('side-detail-title').innerText = item.title;
+            document.getElementById('side-detail-pillar').innerText = item.pillar;
+            document.getElementById('side-detail-badge').innerHTML = `<i class="fa-regular fa-images mr-1"></i> ${item.type} (3:4 Ratio)`;
+
+            const breakdownContainer = document.getElementById('side-detail-breakdown');
+            breakdownContainer.innerHTML = item.breakdown.map((b, idx) => `
+                <div class="flex items-start gap-2">
+                    <span class="bg-ig-blue text-white text-[9px] font-bold px-1.5 py-0.5 rounded mt-0.5">${idx + 1}</span>
+                    <span>${b}</span>
+                </div>
+            `).join('');
+        }
+
+        // Toggle Like in Post View
+        function togglePostLike(btn) {
+            const icon = btn.querySelector('i');
+            if(icon.classList.contains('text-ig-red')) {
+                icon.className = 'fa-regular fa-heart text-xl app-text-primary';
+            } else {
+                icon.className = 'fa-solid fa-heart text-xl text-ig-red';
+            }
+        }
+
+        // Toggle Like in Reels View
+        function toggleReelsLike(btn) {
+            const icon = btn.querySelector('i');
+            if(icon.classList.contains('text-ig-red')) {
+                icon.className = 'fa-regular fa-heart text-2xl text-white drop-shadow';
+            } else {
+                icon.className = 'fa-solid fa-heart text-2xl text-ig-red drop-shadow';
+            }
+        }
+    </script>
+
+</body>
+</html>

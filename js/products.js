@@ -492,11 +492,26 @@
      PRODUCT DETAIL MODAL
      --------------------------------------------------------- */
   const detailOverlay = document.querySelector("#product-modal");
+  let selectedSize = "35ml";
+
+  function updateModalActions(p) {
+    if (!detailOverlay) return;
+    const price = selectedSize === "35ml" ? p.price35 : p.price50;
+    const priceDisplay = detailOverlay.querySelector(".modal-selected-price");
+    if (priceDisplay) priceDisplay.textContent = formatPrice(price);
+
+    const waBtn = detailOverlay.querySelector(".modal-btn-wa");
+    if (waBtn) {
+      const msg = `Halo Mirellon Parfum, saya ingin memesan parfum *${p.name}* ukuran *${selectedSize}* (${formatPrice(price)}).`;
+      waBtn.href = `https://wa.me/6282119027766?text=${encodeURIComponent(msg)}`;
+    }
+  }
 
   function openDetailModal(productId) {
     const p = PRODUCTS.find((item) => item.id === productId);
     if (!p || !detailOverlay) return;
 
+    selectedSize = "35ml";
     detailOverlay.querySelector(".modal-media img").src = p.image;
     detailOverlay.querySelector(".modal-media img").alt = `Botol parfum Mirellon ${p.name}`;
     detailOverlay.querySelector(".modal-title").textContent = p.name;
@@ -505,12 +520,28 @@
     detailOverlay.querySelector(".modal-top").textContent = p.top;
     detailOverlay.querySelector(".modal-middle").textContent = p.middle;
     detailOverlay.querySelector(".modal-base").textContent = p.base;
-    detailOverlay.querySelector(".modal-buy").dataset.id = p.id;
 
-    const priceEl = detailOverlay.querySelector(".modal-price");
-    if (priceEl) priceEl.textContent = `35ml ${formatPrice(p.price35)}  ·  50ml ${formatPrice(p.price50)}`;
-    const ratingEl = detailOverlay.querySelector(".modal-rating");
-    if (ratingEl) ratingEl.innerHTML = `${starRow(p.rating)} <span class="rating-num">${p.rating.toFixed(1)}</span> <span class="rating-count">(${p.reviews})</span>`;
+    // Reset size chips
+    detailOverlay.querySelectorAll(".size-chip").forEach((chip) => {
+      chip.classList.toggle("active", chip.dataset.size === "35ml");
+      chip.onclick = () => {
+        detailOverlay.querySelectorAll(".size-chip").forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        selectedSize = chip.dataset.size;
+        updateModalActions(p);
+      };
+    });
+
+    updateModalActions(p);
+
+    const tokpedBtn = detailOverlay.querySelector(".modal-btn-tokopedia");
+    if (tokpedBtn) tokpedBtn.href = MARKETPLACE_LINKS.tokopedia || "#";
+
+    const tiktokBtn = detailOverlay.querySelector(".modal-btn-tiktok");
+    if (tiktokBtn) tiktokBtn.href = MARKETPLACE_LINKS.tiktok || "#";
+
+    const modalBuyBtn = detailOverlay.querySelector(".modal-buy");
+    if (modalBuyBtn) modalBuyBtn.dataset.id = p.id;
 
     detailOverlay.classList.add("open");
     document.body.style.overflow = "hidden";

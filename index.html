@@ -20,7 +20,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -34,10 +34,19 @@
     <span class="loader-mark">MIRELLON</span>
   </div>
 
+  <!-- Top Luxury Announcement Bar -->
+  <aside class="announcement-bar" role="region" aria-label="Pengumuman eksklusif">
+    <div class="container announcement-container">
+      <span class="announcement-badge">EKSKLUSIF</span>
+      <span class="announcement-text">✨ <strong>Garansi 100% Original Eau De Parfum</strong> &bull; Free Fragrance Tester di Setiap Pesanan &bull; Garansi Pecah Ganti Baru</span>
+      <button class="announcement-close" aria-label="Tutup pengumuman">&times;</button>
+    </div>
+  </aside>
+
   <!-- Header -->
   <header class="site-header transparent" data-transparent-hero="true">
     <div class="container">
-      <a href="index.html" class="logo">Mirellon<span>.</span></a>
+      <a href="index.html" class="logo luxury-logo">M I R E L L O N</a>
       <nav class="main-nav" aria-label="Navigasi utama">
         <ul class="nav-links">
           <li><a class="nav-link active" href="index.html">Home</a></li>
@@ -50,7 +59,7 @@
           <button class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Ganti mode gelap/terang">
             <span data-theme-icon>☾</span>
           </button>
-          <a href="products.html" class="btn btn-outline desktop-only">Shop Now</a>
+          <a href="products.html" class="btn-boutique desktop-only">Shop</a>
           <button class="hamburger" aria-label="Buka menu" aria-controls="mobile-nav">
             <span></span><span></span><span></span>
           </button>
@@ -71,26 +80,90 @@
 
   <main id="main">
 
-    <!-- HERO -->
-    <section class="hero" id="hero-spotlight">
-      <div class="hero-bg-base" style="background-image:url('images/hero-bottle-motif.svg');" aria-hidden="true"></div>
-      <div class="hero-bg-reveal" id="hero-reveal" style="background-image:url('images/bottle-hero.png');" aria-hidden="true"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
-      <div class="hero-grain" aria-hidden="true"></div>
+    <!-- HERO — EDITORIAL HAUTE PARFUMERIE -->
+    <section class="hero hero-editorial" id="hero-spotlight">
+      <div class="hero-editorial-backdrop" aria-hidden="true"></div>
+
+      <!-- Full-Height Left Artwork Stage -->
+      <div class="hero-editorial-visual" data-aos="fade-right">
+        <div class="editorial-artwork-wrap">
+          <img src="images/fleur-voyage-tuberose.jpg" alt="Mirellon Fleur Voyage Eau de Parfum" class="editorial-artwork-img" loading="eager">
+          <div class="editorial-fade-edge" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="container hero-editorial-container">
+        <div class="hero-editorial-grid">
+          <!-- Left spacer so copy stays aligned in the right half -->
+          <div class="hero-spacer-col" aria-hidden="true"></div>
+
+          <!-- Right Column: Editorial Haute Parfumerie Copy -->
+          <div class="hero-editorial-copy" data-aos="fade-left" data-aos-delay="150">
+            <span class="editorial-eyebrow">EAU DE PARFUM / SIGNATURE COLLECTION</span>
+
+            <h1 class="editorial-title">
+              Luxury Fragrance,<br>
+              <em class="editorial-title-gold">Everyday Confidence.</em>
+            </h1>
+
+            <p class="editorial-desc">
+              Mirellon meracik wewangian <em>Eau de Parfum</em> premium dengan ketahanan luar biasa. Pancarkan keanggunan dan pesona abadi Anda setiap hari.
+            </p>
+
+            <div class="editorial-cta-wrap">
+              <a href="products.html" class="btn-editorial-outline btn-magnetic">
+                <span>EXPLORE COLLECTION</span>
+                <span class="editorial-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Scroll Cue -->
+      <div class="scroll-cue-editorial" aria-hidden="true">
+        <span class="scroll-arrow">↓</span>
+        <span class="scroll-label">SCROLL</span>
+      </div>
+    </section>
+
+    <!-- TRUST & QUALITY GUARANTEE STRIP -->
+    <section class="trust-strip">
       <div class="container">
-        <div class="hero-copy">
-          <span class="hero-eyebrow">Mirellon Parfum</span>
-          <h1 class="hero-title">Luxury Fragrance for Everyday Confidence</h1>
-          <p class="hero-sub">Mirellon menghadirkan parfum lokal berkualitas dengan karakter aroma premium yang elegan, tahan lama, dan tetap terjangkau.</p>
-          <div class="hero-actions">
-            <a href="products.html" class="btn btn-gold btn-magnetic">Explore Collection</a>
-            <a href="products.html" class="btn btn-outline btn-magnetic">Shop Now</a>
+        <div class="trust-grid">
+          <div class="trust-item" data-aos="fade-up">
+            <div class="trust-icon">🏆</div>
+            <div>
+              <h4>100% Authentic EDP</h4>
+              <p>Konsentrasi Eau de Parfum murni dengan bibit wewangian premium.</p>
+            </div>
+          </div>
+          <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="trust-icon">⏳</div>
+            <div>
+              <h4>Tahan 8–12 Jam</h4>
+              <p>Formula tahan lama yang menyatu alami dengan aroma tubuh Anda.</p>
+            </div>
+          </div>
+          <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="trust-icon">🌿</div>
+            <div>
+              <h4>Skin-Safe Formula</h4>
+              <p>Aman disemprotkan langsung pada kulit tanpa rasa perih atau iritasi.</p>
+            </div>
+          </div>
+          <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="trust-icon">📦</div>
+            <div>
+              <h4>Garansi Pecah Ganti Baru</h4>
+              <p>Proteksi pengiriman 100% aman sampai ke alamat tujuan Anda.</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="scroll-cue"><span class="line"></span>Scroll</div>
     </section>
+
     <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
       <div class="cursor-dot"></div>
       <div class="cursor-ring"></div>
@@ -100,15 +173,20 @@
     <section id="about">
       <div class="container about-grid">
         <div class="about-visual" data-aos="fade-right">
-          <img src="images/favicon.svg" alt="Ilustrasi botol parfum Mirellon Floral Kiss" loading="lazy" width="260" height="400">
+          <div class="about-card-frame">
+            <div class="card-glass-shine" aria-hidden="true"></div>
+            <img src="images/bottle-hero.png" alt="Koleksi Parfum Eksklusif Mirellon" loading="lazy" width="500" height="340">
+          </div>
         </div>
         <div class="about-text" data-aos="fade-left">
           <span class="eyebrow">About Mirellon</span>
           <h2 class="section-title">Wewangian yang Menjadi Identitas Anda</h2>
+          <blockquote class="about-quote">
+            "Parfum bukan sekadar aroma, melainkan kunci percaya diri dan kesan tak terlupakan."
+          </blockquote>
           <p>Mirellon Parfum adalah brand parfum lokal Indonesia yang menghadirkan pengalaman wewangian premium dengan harga yang tetap terjangkau.</p>
-          <p>Kami percaya bahwa parfum bukan hanya aroma, tetapi bagian dari identitas, kepercayaan diri, dan gaya hidup.</p>
-          <p>Setiap varian dibuat dengan karakter aroma yang elegan sehingga cocok digunakan untuk aktivitas sehari-hari maupun acara spesial.</p>
-          <a href="about.html" class="btn btn-outline mt-lg">Selengkapnya Tentang Kami</a>
+          <p>Setiap varian dibuat dengan konsentrasi aroma <em>Eau De Parfum</em> yang tahan lama dan menyatu alami dengan aroma tubuh Anda.</p>
+          <a href="about.html" class="btn btn-outline mt-lg btn-magnetic">Selengkapnya Tentang Kami</a>
         </div>
       </div>
     </section>
@@ -169,8 +247,151 @@
       </div>
     </section>
 
+    <!-- INTERACTIVE SCENT MATCH QUIZ -->
+    <section class="bg-surface scent-quiz-section" id="scent-quiz">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="eyebrow">Scent Finder Quiz</span>
+          <h2 class="section-title">Temukan Karakter Aroma Anda</h2>
+          <p class="section-desc">Jawab 3 pertanyaan singkat dan temukan aroma signature Mirellon yang paling sesuai dengan kepribadian Anda.</p>
+        </div>
+
+        <div class="quiz-container" data-aos="fade-up">
+          <!-- Progress Header -->
+          <div class="quiz-header">
+            <div class="quiz-step-indicator">Langkah <span class="quiz-current-step">1</span> dari 3</div>
+            <div class="quiz-progress-track">
+              <div class="quiz-progress-fill"></div>
+            </div>
+          </div>
+
+          <!-- Questions Body -->
+          <div class="quiz-body">
+            <!-- Step 1 -->
+            <div class="quiz-step active" data-step="1">
+              <h3 class="quiz-question">1. Bagaimana Anda mendefinisikan persona / karakter Anda?</h3>
+              <div class="quiz-options-grid">
+                <button class="quiz-option" data-val="men">
+                  <span class="quiz-opt-icon">👔</span>
+                  <div class="quiz-opt-content">
+                    <strong>Maskulin & Tegas</strong>
+                    <span>Berkarisma, percaya diri, dan berwibawa.</span>
+                  </div>
+                </button>
+                <button class="quiz-option" data-val="women">
+                  <span class="quiz-opt-icon">🌸</span>
+                  <div class="quiz-opt-content">
+                    <strong>Feminin & Anggun</strong>
+                    <span>Manis, memikat, dan penuh kelembutan.</span>
+                  </div>
+                </button>
+                <button class="quiz-option" data-val="unisex">
+                  <span class="quiz-opt-icon">✨</span>
+                  <div class="quiz-opt-content">
+                    <strong>Elegan & Modern</strong>
+                    <span>Dinamis, fleksibel, dan berkelas (Unisex).</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="quiz-step" data-step="2">
+              <h3 class="quiz-question">2. Kapan Anda paling sering memakai parfum?</h3>
+              <div class="quiz-options-grid">
+                <button class="quiz-option" data-val="daily">
+                  <span class="quiz-opt-icon">☀️</span>
+                  <div class="quiz-opt-content">
+                    <strong>Aktivitas Harian & Kantor</strong>
+                    <span>Aroma segar dan nyaman yang tidak menyengat.</span>
+                  </div>
+                </button>
+                <button class="quiz-option" data-val="romantic">
+                  <span class="quiz-opt-icon">🌙</span>
+                  <div class="quiz-opt-content">
+                    <strong>Kencan & Momen Romantis</strong>
+                    <span>Aroma manis memikat yang membekas di ingatan.</span>
+                  </div>
+                </button>
+                <button class="quiz-option" data-val="formal">
+                  <span class="quiz-opt-icon">🥂</span>
+                  <div class="quiz-opt-content">
+                    <strong>Acara Formal & Pesta Malam</strong>
+                    <span>Aroma mewah berkelas yang mencuri perhatian.</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="quiz-step" data-step="3">
+              <h3 class="quiz-question">3. Sentuhan aroma apa yang paling membuat Anda nyaman?</h3>
+              <div class="quiz-options-grid">
+                <button class="quiz-option" data-val="woody">
+                  <span class="quiz-opt-icon">🌲</span>
+                  <div class="quiz-opt-content">
+                    <strong>Citrus Segar & Kayu Hangat</strong>
+                    <span>Sensasi segar berpadu dengan cedarwood & lavender.</span>
+                  </div>
+                </button>
+                <button class="quiz-option" data-val="floral">
+                  <span class="quiz-opt-icon">🌹</span>
+                  <div class="quiz-opt-content">
+                    <strong>Bunga Mawar & Soft Musk</strong>
+                    <span>Kelembutan bunga mawar, peony, dan amber manis.</span>
+                  </div>
+                </button>
+                <button class="quiz-option" data-val="fruity">
+                  <span class="quiz-opt-icon">🍐</span>
+                  <div class="quiz-opt-content">
+                    <strong>Juicy Pear & White Jasmine</strong>
+                    <span>Segarnya buah pir dan keharuman melati putih modern.</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Card (Hidden initially) -->
+          <div class="quiz-result-card" style="display:none;">
+            <div class="result-header">
+              <span class="result-match-badge">98% Match</span>
+              <span class="eyebrow">Rekomendasi Terbaik Untuk Anda</span>
+            </div>
+            <div class="result-grid">
+              <div class="result-media">
+                <img src="images/fleur-voyage.png" alt="" class="result-img" loading="lazy">
+              </div>
+              <div class="result-info">
+                <span class="result-category eyebrow"></span>
+                <h3 class="result-title"></h3>
+                <div class="result-notes-box">
+                  <span class="notes-icon">✨</span>
+                  <span class="result-notes"></span>
+                </div>
+                <p class="result-desc"></p>
+                <div class="result-actions">
+                  <a href="#" class="btn btn-gold result-btn-wa" target="_blank" rel="noopener">
+                    <span>Order via WhatsApp</span>
+                  </a>
+                  <a href="https://tk.tokopedia.com/ZSVDJ2eSw/" class="btn btn-outline result-btn-tokopedia" target="_blank" rel="noopener">
+                    <span>Tokopedia</span>
+                  </a>
+                  <a href="https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV" class="btn btn-outline result-btn-tiktok" target="_blank" rel="noopener">
+                    <span>TikTok Shop</span>
+                  </a>
+                </div>
+                <button class="quiz-restart-btn">↺ Coba Kuis Lagi</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- PORTFOLIO / TIMELINE -->
-    <section class="bg-surface">
+    <section>
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Our Portfolio</span>
@@ -212,7 +433,7 @@
     </section>
 
     <!-- REVIEWS -->
-    <section>
+    <section class="bg-surface">
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Customer Reviews</span>
@@ -263,6 +484,64 @@
       </div>
     </section>
 
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="eyebrow">Pertanyaan Umum</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">Segala hal yang perlu Anda ketahui tentang produk dan pemesanan Mirellon Parfum.</p>
+        </div>
+        <div class="faq-accordion" data-aos="fade-up">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Berapa lama ketahanan aroma Mirellon Eau de Parfum?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Mirellon menggunakan konsentrasi <strong>Eau de Parfum (EDP)</strong> dengan minyak wangi premium. Ketahanan aroma berkisar antara <strong>8 hingga 12 jam</strong> di kulit, dan bisa bertahan hingga 24 jam pada serat pakaian tergantung aktivitas dan suhu lingkungan.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Bagaimana cara menyemprotkan parfum agar aromanya tahan lebih lama?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Semprotkan parfum pada titik-titik nadi tubuh seperti pergelangan tangan, leher bagian belakang, dan lipatan siku setelah mandi (saat pori-pori kulit lembap). Hindari menggosok pergelangan tangan setelah disemprot agar partikel molekul top notes tidak rusak.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Apakah formula Mirellon aman disemprotkan langsung ke kulit?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Ya, 100% aman. Formula Mirellon Parfum diracik dengan bahan berkualitas kosmetik berstandar tinggi yang tidak menimbulkan rasa perih, panas, gatal, ataupun noda kuning pada pakaian berwarna cerah.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Bagaimana jika produk yang saya terima rusak atau pecah saat pengiriman?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Setiap paket dipacking dengan <em>double bubble wrap</em> dan dus tebal anti-benturan. Jika botol pecah dalam perjalanan, kami memberikan <strong>Garansi 100% Ganti Baru</strong> tanpa biaya tambahan—cukup kirimkan video unboxing ke WhatsApp admin kami.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Di mana saya bisa memesan produk resmi Mirellon?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Anda dapat memesan secara langsung melalui <strong>WhatsApp Official</strong>, toko resmi kami di <strong>Tokopedia</strong>, maupun <strong>TikTok Shop</strong> dengan jaminan produk asli dan pengiriman cepat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="bg-surface text-center">
       <div class="container">
@@ -288,7 +567,7 @@
     </div>
   </div>
 
-  <!-- Product Detail Modal -->
+    <!-- Product Detail Modal -->
   <div class="overlay" id="product-modal" role="dialog" aria-modal="true" aria-label="Detail produk">
     <div class="modal-box">
       <button class="modal-close-x" data-close aria-label="Tutup">&times;</button>
@@ -296,20 +575,60 @@
         <div class="product-media modal-media">
           <img src="images/deep-horizon.png" alt="" loading="lazy">
         </div>
-        <div>
+        <div class="modal-details-col">
           <div class="modal-category eyebrow"></div>
           <h3 class="modal-title"></h3>
+          
+          <div class="modal-size-picker">
+            <span class="size-label">Pilih Ukuran:</span>
+            <div class="size-chips">
+              <button class="size-chip active" data-size="35ml">35ml (Rp 79.000)</button>
+              <button class="size-chip" data-size="50ml">50ml (Rp 119.000)</button>
+            </div>
+          </div>
+
+          <div class="modal-price-box">
+            <span class="price-caption">Harga:</span>
+            <strong class="modal-selected-price">Rp 79.000</strong>
+          </div>
+
           <div class="modal-notes">
             <div><strong>Top Notes:</strong> <span class="modal-top"></span></div>
             <div><strong>Middle Notes:</strong> <span class="modal-middle"></span></div>
             <div><strong>Base Notes:</strong> <span class="modal-base"></span></div>
           </div>
           <p class="modal-desc"></p>
-          <button class="btn btn-gold modal-buy">Buy Now</button>
+
+          <div class="modal-direct-actions">
+            <a href="#" class="btn btn-gold modal-btn-wa" target="_blank" rel="noopener">
+              <span>Order via WhatsApp</span>
+            </a>
+            <a href="https://tk.tokopedia.com/ZSVDJ2eSw/" class="btn btn-outline modal-btn-tokopedia" target="_blank" rel="noopener">
+              <span>Tokopedia</span>
+            </a>
+            <a href="https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV" class="btn btn-outline modal-btn-tiktok" target="_blank" rel="noopener">
+              <span>TikTok Shop</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Floating WhatsApp Quick Order Widget -->
+  <aside class="floating-wa-wrap" aria-label="Konsultasi WhatsApp">
+    <a href="https://wa.me/6282119027766?text=Halo%20Mirellon%20Parfum,%20saya%20tertarik%20untuk%20konsultasi%20dan%20memesan%20parfum." 
+       class="floating-wa-btn" 
+       target="_blank" 
+       rel="noopener" 
+       aria-label="Chat WhatsApp Admin Mirellon">
+      <span class="wa-ripple" aria-hidden="true"></span>
+      <svg class="wa-icon" viewBox="0 0 24 24" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.638A8.955 8.955 0 0 0 12.053 3c-4.968 0-9.01 4.042-9.01 9.013 0 1.587.413 3.134 1.2 4.498L3 21l4.642-1.218a8.96 8.96 0 0 0 4.41 1.15h.004c4.967 0 9.01-4.043 9.01-9.014a8.95 8.95 0 0 0-2.663-6.28zM12.057 19.413h-.003a7.447 7.447 0 0 1-3.798-1.041l-.272-.162-2.824.74.753-2.753-.177-.282a7.448 7.448 0 0 1-1.144-3.987c0-4.114 3.348-7.461 7.465-7.461a7.43 7.43 0 0 1 5.276 2.186 7.43 7.43 0 0 1 2.183 5.28c-.002 4.114-3.35 7.46-7.46 7.46zm4.093-5.592c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.113s-.58.73-.711.88c-.131.15-.262.169-.487.056-.225-.113-.949-.35-1.808-1.116-.669-.597-1.121-1.334-1.252-1.56-.131-.225-.014-.347.098-.46.101-.102.225-.263.338-.394.112-.132.15-.225.225-.376.075-.15.037-.281-.019-.394-.056-.113-.504-1.214-.69-1.663-.182-.437-.367-.378-.504-.385l-.43-.008c-.15 0-.393.056-.599.281-.206.225-.786.769-.786 1.875s.805 2.175.917 2.325c.112.15 1.584 2.42 3.838 3.393.536.232.955.37 1.281.474.538.171 1.028.147 1.416.089.432-.065 1.327-.543 1.514-1.069.187-.525.187-.975.131-1.069-.056-.094-.206-.15-.431-.263z" fill="#ffffff"/>
+      </svg>
+      <span class="wa-tooltip">Chat Admin Mirellon</span>
+    </a>
+  </aside>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -336,9 +655,9 @@
         <div class="footer-col">
           <h4>Marketplace</h4>
           <ul>
-            <li><a href="#" id="footer-shopee">Shopee</a></li>
-            <li><a href="#" id="footer-tokopedia">Tokopedia</a></li>
-            <li><a href="#" id="footer-tiktok">TikTok Shop</a></li>
+            <li><a href="#" id="footer-shopee" data-store="shopee" target="_blank" rel="noopener">Shopee</a></li>
+            <li><a href="https://tk.tokopedia.com/ZSVDJ2eSw/" id="footer-tokopedia" data-store="tokopedia" target="_blank" rel="noopener">Tokopedia</a></li>
+            <li><a href="https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV" id="footer-tiktok" data-store="tiktok" target="_blank" rel="noopener">TikTok Shop</a></li>
           </ul>
         </div>
         <div class="footer-col">

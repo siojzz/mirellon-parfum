@@ -1,8 +1,6 @@
 /* =========================================================
    MIRELLON PARFUM — HERO-FX.JS
-   Extra premium hero effects: custom cursor, magnetic buttons,
-   and floating gold particles. Runs only on hover-capable
-   pointer devices; respects prefers-reduced-motion.
+   Custom cursor, magnetic buttons, and smooth bottle parallax
    ========================================================= */
 
 (function () {
@@ -14,32 +12,7 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const hasHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  /* ---------- Floating gold particles ---------- */
-  const particlesWrap = document.getElementById("hero-particles");
-  if (particlesWrap && !prefersReducedMotion) {
-    const COUNT = 22;
-    const frag = document.createDocumentFragment();
-    for (let i = 0; i < COUNT; i++) {
-      const p = document.createElement("span");
-      p.className = "hero-particle";
-      const size = (Math.random() * 3 + 2).toFixed(1);
-      const left = (Math.random() * 100).toFixed(1);
-      const duration = (Math.random() * 10 + 12).toFixed(1);
-      const delay = (-(Math.random() * 20)).toFixed(1);
-      const drift = (Math.random() * 60 - 30).toFixed(0);
-      const opacity = (Math.random() * 0.4 + 0.4).toFixed(2);
-      p.style.setProperty("--s", size + "px");
-      p.style.setProperty("--l", left + "%");
-      p.style.setProperty("--dur", duration + "s");
-      p.style.setProperty("--delay", delay + "s");
-      p.style.setProperty("--drift", drift + "px");
-      p.style.setProperty("--op", opacity);
-      frag.appendChild(p);
-    }
-    particlesWrap.appendChild(frag);
-  }
-
-  /* Skip cursor + magnetic buttons on touch devices */
+  /* Skip cursor + magnetic buttons on touch devices or reduced motion */
   if (!hasHover || prefersReducedMotion) return;
 
   /* ---------- Custom elegant cursor ---------- */
@@ -85,4 +58,18 @@
       btn.style.transform = "";
     });
   });
+
+  /* ---------- Subtle mouse parallax on Editorial perfume artwork ---------- */
+  const editorialImg = hero.querySelector(".editorial-artwork-img");
+  if (editorialImg) {
+    hero.addEventListener("mousemove", (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      editorialImg.style.transform = `translate(${x * 16}px, ${y * 10}px) scale(1.01)`;
+    });
+    hero.addEventListener("mouseleave", () => {
+      editorialImg.style.transform = "";
+    });
+  }
 })();
