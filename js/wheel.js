@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Aroma misterius yang memadukan wangi kayu dan rempah oriental yang eksotis."
     },
     {
-      name: "Ocean Breeze", price: "Rp 79.000",
-      desc: "Kesegaran lautan tropis yang membangkitkan semangat dan energi positif."
+      name: "Lust", price: "Rp 89.000",
+      desc: "Aroma memikat yang penuh gairah dan pesona tak terlupakan."
     },
     {
       name: "Silk Petal", price: "Rp 79.000",
