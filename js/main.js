@@ -53,38 +53,6 @@ window.MIRELLON_CONFIG.marketplace = {
     });
   }
 
-  /* ---------- Theme (Dark / Light) ---------- */
-  const THEME_KEY = "mirellon-theme";
-  const root = document.documentElement;
-  const themeToggle = document.querySelectorAll("[data-theme-toggle]");
-
-  function applyTheme(theme) {
-    const activeTheme = theme === "dark" ? "dark" : "light";
-    root.setAttribute("data-theme", activeTheme);
-    themeToggle.forEach((btn) => {
-      btn.setAttribute("aria-pressed", activeTheme === "dark");
-      const icon = btn.querySelector("[data-theme-icon]");
-      if (icon) icon.textContent = activeTheme === "dark" ? "☀" : "☾";
-    });
-  }
-
-  let savedTheme = "light";
-  try {
-    savedTheme = localStorage.getItem(THEME_KEY) || "light";
-  } catch (e) {
-    savedTheme = "light";
-  }
-  applyTheme(savedTheme);
-
-  themeToggle.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
-      const next = current === "dark" ? "light" : "dark";
-      applyTheme(next);
-      try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* ignore */ }
-    });
-  });
-
   /* ---------- Sticky / Transparent Header ---------- */
   const header = document.querySelector(".site-header");
   if (header) {
