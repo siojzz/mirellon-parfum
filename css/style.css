@@ -374,6 +374,10 @@ h1, h2, h3, h4 {
   transform: translateY(-6px) scale(1.02);
 }
 
+[data-theme="light"] .editorial-artwork-img {
+  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.15));
+}
+
 .editorial-fade-edge {
   position: absolute;
   top: 0;
