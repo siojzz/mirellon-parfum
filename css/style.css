@@ -2903,7 +2903,7 @@ body.shop-page .product-media, body.shop-page .product-body {
   margin-top: -150px;
   /* Supaya pivot point rotasi slider sama dengan transform-origin anaknya! */
   transform-origin: 650px center;
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 1s ease-in-out;
   z-index: 5;
 }
 /* Masing-masing item di dalam roda */
