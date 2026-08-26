@@ -125,31 +125,6 @@ window.MIRELLON_CONFIG.marketplace = {
     revealTargets.forEach((el) => el.classList.add("in-view"));
   }
 
-  /* ---------- FAQ Accordion ---------- */
-  const faqItems = document.querySelectorAll(".faq-item");
-  faqItems.forEach((item) => {
-    const question = item.querySelector(".faq-question");
-    const answer = item.querySelector(".faq-answer");
-    if (!question || !answer) return;
-
-    question.addEventListener("click", () => {
-      const isOpen = item.classList.contains("open");
-
-      faqItems.forEach((other) => {
-        other.classList.remove("open");
-        const otherAnswer = other.querySelector(".faq-answer");
-        if (otherAnswer) otherAnswer.style.maxHeight = null;
-        other.querySelector(".faq-question")?.setAttribute("aria-expanded", "false");
-      });
-
-      if (!isOpen) {
-        item.classList.add("open");
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        question.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-
   /* ---------- Contact Form (client-side demo submit) ---------- */
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
@@ -581,3 +556,16 @@ window.MIRELLON_CONFIG.marketplace = {
   }
   initNotesExplorer();
 })();
+
+
+  // Mouse Parallax for Hero Editorial Image
+  const heroVisual = document.querySelector('.editorial-parallax-wrapper');
+  if (heroVisual) {
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 15; // Max 15px move
+      const y = (e.clientY / window.innerHeight - 0.5) * 15;
+      // We apply via custom properties so it doesn't override the CSS animations
+      heroVisual.style.setProperty('--parallax-x', \px\);
+      heroVisual.style.setProperty('--parallax-y', \px\);
+    });
+  }
