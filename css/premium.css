@@ -1924,3 +1924,122 @@ section:not(.hero):not(.wheel-hero):not(.page-hero):not(.trust-strip) {
 .img-item.active img {
   filter: drop-shadow(0 20px 40px rgba(199, 166, 106, 0.15)) drop-shadow(0 0 100px rgba(199, 166, 106, 0.05));
 }
+\n
+
+
+/* =========================================================
+   EDITORIAL INNER PAGE HERO (Centered)
+   ========================================================= */
+
+.page-hero.page-hero-editorial {
+  position: relative;
+  min-height: 40svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(8rem, 12vh, 10rem) 0 clamp(2rem, 5vh, 4rem);
+  text-align: center;
+}
+
+.page-hero-editorial .container {
+  width: min(100% - 3rem, 1400px);
+  position: relative;
+  z-index: 10;
+}
+
+.page-hero-editorial .page-hero-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "label crumb"
+    "title title";
+  column-gap: 2rem;
+  row-gap: clamp(2rem, 5vh, 3.5rem);
+  align-items: center;
+  width: 100%;
+  padding-top: clamp(1.25rem, 2.5vh, 2rem);
+  border-top: 1px solid rgba(241, 234, 223, 0.2);
+}
+
+.page-hero-editorial .page-hero-label {
+  grid-area: label;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.page-hero-editorial .page-hero-index {
+  font-family: 'Cormorant Garamond', var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: rgba(241, 234, 223, 0.45);
+}
+
+.page-hero-editorial .eyebrow {
+  margin: 0;
+  font-size: 0.6rem;
+  line-height: 1.3;
+  letter-spacing: 0.24em;
+  color: #c8a96a;
+  text-transform: uppercase;
+}
+
+.page-hero-editorial .breadcrumb {
+  grid-area: crumb;
+  align-self: center;
+  margin: 0;
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(241, 234, 223, 0.4);
+}
+
+.page-hero-editorial .breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.page-hero-editorial .breadcrumb a:hover {
+  color: #c8a96a;
+}
+.page-hero-editorial .breadcrumb span {
+  margin: 0 0.5rem;
+  color: rgba(241, 234, 223, 0.2);
+}
+
+.page-hero-editorial h1 {
+  grid-area: title;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0 0.22em;
+  font-size: clamp(3.8rem, 6.4vw, 6.4rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-align: center;
+  font-family: 'Cormorant Garamond', var(--font-serif);
+}
+
+.page-hero-editorial h1 span,
+.page-hero-editorial h1 em {
+  display: inline-block;
+}
+.page-hero-editorial h1 em {
+  font-style: italic;
+  color: #c8a96a;
+}
+
+@media (max-width: 768px) {
+  .page-hero-editorial h1 {
+    font-size: clamp(2.8rem, 8vw, 3.5rem);
+  }
+}
+
