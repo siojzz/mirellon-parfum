@@ -675,9 +675,9 @@ section:not(.hero):not(.wheel-hero):not(.page-hero):not(.trust-strip) {
   position: relative;
   min-height: 58svh;
   display: grid;
-  align-items: end;
+  align-items: center;
   overflow: hidden;
-  padding: 10rem 0 4.5rem;
+  padding: 8rem 0 2rem;
   background:
     radial-gradient(circle at 76% 28%, rgba(191, 153, 82, 0.16), transparent 22rem),
     linear-gradient(135deg, #15120d, #090806 62%);
@@ -1309,7 +1309,7 @@ section:not(.hero):not(.wheel-hero):not(.page-hero):not(.trust-strip) {
 
 .wheel-purchase-row {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1.35rem;
