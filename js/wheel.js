@@ -22,43 +22,59 @@ document.addEventListener("DOMContentLoaded", () => {
   const products = [
     {
       name: "Deep Horizon", price: "Rp 79.000", family: "Fresh Woody",
-      top: "Bergamot", heart: "Lavender", base: "Cedarwood",
-      desc: "Komposisi segar dan maskulin dengan kedalaman kayu yang tenang—dirancang untuk kehadiran yang tegas tanpa terasa berlebihan."
+      top: "Litchi, Mandarin Orange, Lotus, Bergamot", 
+      heart: "Sea Notes, Orange, Brazilian Rosewood", 
+      base: "Tonka Bean, Musk, Amber, Benzoin",
+      desc: "Kombinasi segar laut dan kehangatan amber yang dirancang untuk kehadiran maskulin yang tegas."
     },
     {
       name: "Floral Kiss", price: "Rp 79.000", family: "Romantic Floral",
-      top: "White Flowers", heart: "Rose & Peony", base: "Soft Musk",
-      desc: "Buket bunga yang lembut, modern, dan intim. Sebuah aroma romantis dengan jejak musk yang halus di kulit."
+      top: "Bergamot, Sweet Pea", 
+      heart: "Peony, Damask Rose", 
+      base: "White Musk",
+      desc: "Buket bunga yang manis dan memikat. Aroma romantis dengan sentuhan peony dan musk yang anggun."
     },
     {
-      name: "Fleur Voyage", price: "Rp 79.000", family: "Fruity Floral",
-      top: "Pear & Lychee", heart: "Peony & Jasmine", base: "White Musk",
-      desc: "Kilau buah pir dan lychee bertemu bunga putih yang anggun—cerah, memikat, dan mudah dikenali sejak semprotan pertama."
+      name: "Fleur Voyage", price: "Rp 79.000", family: "White Floral",
+      top: "Orange Blossom, Bergamot", 
+      heart: "Tuberose, Indian Jasmine", 
+      base: "Madagascar Vanilla, White Musk, Virginia Cedar",
+      desc: "Harmoni elegan bunga putih dan kelembutan vanilla yang menciptakan jejak memikat dan mewah."
     },
     {
-      name: "Golden Ember", price: "Rp 79.000", family: "Oriental Spicy",
-      top: "Bergamot", heart: "Cinnamon", base: "Amber",
-      desc: "Rempah hangat dan amber berlapis membentuk aura yang kaya, berani, dan berkelas untuk momen setelah matahari terbenam."
+      name: "Golden Valor", price: "Rp 79.000", family: "Woody Spicy",
+      top: "Plum, Ozonic Notes, Grapefruit, Bergamot", 
+      heart: "Hazelnut, Honey, Cedar, Cashmere Wood, Orange Blossom, Jasmine", 
+      base: "Amberwood, Patchouli, Vetiver, Oakmoss",
+      desc: "Kaya akan madu dan rempah, memberikan aura berani dan berkelas layaknya emas."
     },
     {
-      name: "Mystic", price: "Rp 79.000", family: "Soft Floral Woody",
-      top: "Bergamot", heart: "Jasmine", base: "Sandalwood",
-      desc: "Melati yang bercahaya di atas sandalwood lembut. Tenang, misterius, dan meninggalkan kesan personal yang hangat."
+      name: "Mystic", price: "Rp 79.000", family: "Oriental Woody",
+      top: "Agarwood Oud, Rose, Incense, Raspberry, Saffron", 
+      heart: "Amberwood, Benzoin, Birch", 
+      base: "Geranium",
+      desc: "Misterius dan hangat dengan paduan mawar, oud, dan asap kemenyan yang sangat memikat."
     },
     {
-      name: "Lust", price: "Rp 89.000", family: "Aquatic Musk",
-      top: "Sea Salt", heart: "Lavender", base: "Musk",
-      desc: "Kesegaran mineral bertemu musk yang bersih. Sebuah komposisi uniseks yang sensual, ringan, dan sangat modern."
+      name: "Lust", price: "Rp 89.000", family: "Fruity Floral",
+      top: "Star Fruit, Italian Mandarin, Boysenberry", 
+      heart: "Lotus, Star Jasmine", 
+      base: "Vanilla, Caramelized Pear, Musk, Woody Notes",
+      desc: "Aroma memikat yang penuh gairah dengan manisnya karamel dan kesegaran buah tropis."
     },
     {
-      name: "Silk Petal", price: "Rp 79.000", family: "Powdery Floral",
-      top: "White Petals", heart: "Iris", base: "Clean Musk",
-      desc: "Nuansa kelopak dan bedak yang terasa seperti sutra—lembut, rapi, dan mewah dengan cara yang sangat understated."
+      name: "Pear Blanche", price: "Rp 79.000", family: "Fruity Chypre",
+      top: "King William Pear, Melon", 
+      heart: "Freesia, Rose", 
+      base: "Patchouli, Amber, Musk, Rhubarb",
+      desc: "Kesegaran buah pir yang renyah berpadu dengan keanggunan freesia, menciptakan kesan mewah bercahaya."
     },
     {
-      name: "Velvet Noir", price: "Rp 79.000", family: "Dark Floral",
-      top: "Black Pepper", heart: "Night Bloom", base: "Patchouli",
-      desc: "Bunga malam, rempah, dan patchouli menciptakan jejak gelap yang halus—dramatis, dewasa, dan penuh daya tarik."
+      name: "Aura", price: "Rp 79.000", family: "Fresh Floral",
+      top: "Citruses", 
+      heart: "Green Notes, Rose", 
+      base: "Musk",
+      desc: "Aura segar dari kombinasi citrus dan dedaunan hijau, memberikan energi yang bersih dan memukau."
     }
   ];
 
