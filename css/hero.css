@@ -147,9 +147,10 @@
 .editorial-eyebrow {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-  color: var(--color-gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  color: #d4af37;
+  font-weight: 400;
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
@@ -157,10 +158,11 @@
 
 /* Headline */
 .editorial-title {
-  font-family: var(--font-serif);
-  font-size: 4.2rem;
-  line-height: 1.1;
-  font-weight: 400;
+  font-family: 'Cormorant Garamond', var(--font-serif);
+  font-size: clamp(2.5rem, 8vw, 4.2rem);
+  line-height: 1.15;
+  font-weight: 300;
+  letter-spacing: -0.01em;
   color: var(--color-text-main);
   margin-bottom: 1.5rem;
   opacity: 0;
@@ -170,12 +172,13 @@
 /* Subheadline */
 .editorial-desc {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--color-text-muted);
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  max-width: 400px;
+  color: #c4c4c4;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  margin-bottom: 3.5rem;
+  max-width: 420px;
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
 }
@@ -266,22 +269,21 @@
 }
 
 .editorial-artwork-img {
-  max-height: none !important;
-  object-position: center !important;
-
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain !important;
+  object-position: center !important;
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(0.95);
+  max-height: 90vh !important;
+  margin-top: 5vh;
   animation: imageReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards,
              cinematicZoom 20s ease-out infinite alternate,
              productFloat 6s ease-in-out infinite;
   
   /* Soft fade on edges */
-  -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%), linear-gradient(to top, black 80%, transparent 100%);
-  mask-image: linear-gradient(to left, black 60%, transparent 100%), linear-gradient(to top, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black 80%, transparent 100%), linear-gradient(to top, black 80%, transparent 100%);
+  mask-image: linear-gradient(to left, black 80%, transparent 100%), linear-gradient(to top, black 80%, transparent 100%);
   -webkit-mask-composite: destination-in;
   mask-composite: intersect;
 }
@@ -316,13 +318,13 @@
 }
 
 @keyframes imageReveal {
-  0% { opacity: 0; transform: scale(1.05); }
+  0% { opacity: 0; transform: scale(0.95); }
   100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes cinematicZoom {
   0% { transform: scale(1); }
-  100% { transform: scale(1.02); }
+  100% { transform: scale(1.03); }
 }
 
 @keyframes productFloat {
@@ -359,12 +361,24 @@
   }
 
   .editorial-artwork-img {
-  max-height: none !important;
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
   object-position: center !important;
-
-    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  }
+  opacity: 0;
+  transform: scale(0.95);
+  max-height: 90vh !important;
+  margin-top: 5vh;
+  animation: imageReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards,
+             cinematicZoom 20s ease-out infinite alternate,
+             productFloat 6s ease-in-out infinite;
+  
+  /* Soft fade on edges */
+  -webkit-mask-image: linear-gradient(to left, black 80%, transparent 100%), linear-gradient(to top, black 80%, transparent 100%);
+  mask-image: linear-gradient(to left, black 80%, transparent 100%), linear-gradient(to top, black 80%, transparent 100%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+}
   
   .hero-editorial-copy {
     text-align: center;
@@ -377,8 +391,16 @@
   }
 
   .editorial-title {
-    font-size: 3rem;
-  }
+  font-family: 'Cormorant Garamond', var(--font-serif);
+  font-size: clamp(2.5rem, 8vw, 4.2rem);
+  line-height: 1.15;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
 
   .editorial-cta-wrap {
     flex-direction: column;
@@ -401,6 +423,14 @@
 
 @media (max-width: 768px) {
   .editorial-title {
-    font-size: 2.5rem;
-  }
+  font-family: 'Cormorant Garamond', var(--font-serif);
+  font-size: clamp(2.5rem, 8vw, 4.2rem);
+  line-height: 1.15;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
 }
