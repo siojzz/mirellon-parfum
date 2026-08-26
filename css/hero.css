@@ -178,7 +178,7 @@
   line-height: 1.7;
   letter-spacing: 0.02em;
   margin-bottom: 3.5rem;
-  max-width: 410px;
+  max-width: 380px;
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
 }
@@ -187,7 +187,7 @@
 .editorial-cta-wrap {
   display: flex;
   align-items: center;
-  gap: 3.5rem;
+  gap: 2rem;
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
 }
@@ -195,23 +195,24 @@
 .btn-editorial-outline {
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 2px;
+  gap: 1.2rem;
+  padding: 1.1rem 2.2rem;
+  border: 1px solid rgba(200, 169, 106, 0.5);
+  border-radius: 0;
   background: transparent;
-  color: var(--color-text-main);
+  color: #fff;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.4s ease;
 }
 
 .btn-editorial-outline:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.5);
+  background: rgba(200, 169, 106, 0.1);
+  border-color: rgba(200, 169, 106, 0.8);
 }
 
 .btn-editorial-outline .editorial-arrow {
@@ -223,10 +224,11 @@
 }
 
 .editorial-text-link {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.45);
+  font-family: 'Cormorant Garamond', var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: rgba(200, 169, 106, 0.85);
   text-decoration: none;
   transition: color 0.3s ease;
   display: inline-flex;
@@ -235,7 +237,7 @@
 }
 
 .editorial-text-link:hover {
-  color: var(--color-text-main);
+  color: rgba(200, 169, 106, 1);
 }
 .editorial-text-link span {
   transition: transform 0.3s ease;
@@ -273,7 +275,7 @@
   width: 100vw;
   height: 100vh;
   object-fit: cover !important;
-  object-position: 30% bottom !important;
+  object-position: 45% bottom !important;
   opacity: 0;
   transform: scale(1.0);
   max-height: none !important;
@@ -294,7 +296,7 @@
 .editorial-vignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.85) 15%, rgba(5,5,5,0.25) 50%, transparent 80%);
+  background: linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.85) 18%, rgba(8,8,8,0.4) 45%, transparent 75%);
   pointer-events: none;
   z-index: 2;
 }
