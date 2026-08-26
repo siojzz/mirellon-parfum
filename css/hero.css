@@ -103,7 +103,7 @@
   left: 0 !important;
   right: auto !important;
   justify-content: flex-start !important;
-  padding-left: max(5%, calc((100vw - 1240px) / 2 + 5%)) !important;
+  padding-left: 10% !important;
   
   position: relative;
   z-index: 10;
@@ -323,11 +323,17 @@
 
 /* Mobile Responsive */
 @media (max-width: 992px) {
+  .editorial-cta-wrap {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
   .hero-editorial-inner {
     left: 0 !important;
     right: auto !important;
     justify-content: flex-start !important;
-    padding-left: 5% !important;
+    padding-left: 10% !important;
     width: 100%;
     padding: 0 5%;
     align-items: flex-end;
@@ -387,11 +393,7 @@
   animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 
-  .editorial-cta-wrap {
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
-  }
+
 
   .btn-editorial-outline {
     width: 100%;
