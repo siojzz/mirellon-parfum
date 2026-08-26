@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products — Mirellon Parfum</title>
-  <meta name="description" content="Jelajahi koleksi lengkap Mirellon Parfum: Deep Horizon, Floral Kiss, dan Fleur Voyage. Temukan karakter aroma yang sesuai dengan gaya Anda.">
+  <meta name="description" content="Jelajahi delapan koleksi signature Mirellon Parfum dan temukan karakter aroma yang paling sesuai dengan identitas Anda.">
   <meta name="keywords" content="produk parfum Mirellon, parfum pria, parfum wanita, koleksi parfum lokal">
   <link rel="canonical" href="https://mirellonparfum.com/products.html">
 
@@ -16,11 +16,12 @@
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css?v=abc2">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/animation.css">
+  <link rel="stylesheet" href="css/premium.css">
 </head>
 <body class="shop-page">
   <a class="skip-link" href="#main">Lompat ke konten utama</a>
@@ -64,6 +65,7 @@
     <!-- TIKTOK STRIDE AURORA STYLE WHEEL HERO -->
     <section class="wheel-hero">
       <div class="wheel-ambient-glow" aria-hidden="true"></div>
+      <div class="wheel-edition-mark" aria-hidden="true">MIRELLON / OLFACTORY EDITIONS</div>
       <div class="wheel-container">
         
         <div class="wheel-left">
@@ -79,20 +81,37 @@
           </div>
           
           <div class="wheel-controls">
-            <button id="wheel-prev" class="icon-btn" aria-label="Previous">&lt;</button>
-            <button id="wheel-next" class="icon-btn" aria-label="Next">&gt;</button>
+            <button id="wheel-prev" class="icon-btn" aria-label="Produk sebelumnya">←</button>
+            <div class="wheel-position" aria-live="polite"><span id="wheel-current">01</span><i></i><span>08</span></div>
+            <button id="wheel-next" class="icon-btn" aria-label="Produk berikutnya">→</button>
           </div>
         </div>
         
         <div class="wheel-right">
           <div class="info-item" id="wheel-info-card">
-            <span class="wheel-collection">Mirellon Signature</span>
+            <span class="wheel-collection">The Signature Collection · No. <b id="wheel-number">01</b></span>
             <h2 class="wheel-title" id="wheel-title">Deep Horizon</h2>
-            <p class="wheel-size">35 ml</p>
-            <p class="wheel-price" id="wheel-price">Rp 79.000</p>
-            <p class="wheel-longevity">Longevity: 8-12 Jam</p>
+            <p class="wheel-family" id="wheel-family">Fresh Woody</p>
             <p class="wheel-desc" id="wheel-desc">Parfum pria dengan aroma fresh yang maskulin dan elegan.</p>
-            <a href="https://wa.me/6282119027766?text=Halo%20Mirellon,%20saya%20tertarik%20untuk%20memesan%20parfum" target="_blank" class="btn btn-gold wheel-buy-btn">Beli Sekarang</a>
+
+            <div class="wheel-notes" aria-label="Komposisi aroma">
+              <span><small>TOP</small><strong id="wheel-top">Bergamot</strong></span>
+              <span><small>HEART</small><strong id="wheel-heart">Lavender</strong></span>
+              <span><small>BASE</small><strong id="wheel-base">Cedarwood</strong></span>
+            </div>
+
+            <div class="wheel-purchase-row">
+              <div>
+                <small>35 ML · EAU DE PARFUM</small>
+                <p class="wheel-price" id="wheel-price">Rp 79.000</p>
+              </div>
+              <span class="wheel-longevity">8–12 HOURS</span>
+            </div>
+
+            <div class="wheel-actions">
+              <a id="wheel-buy-btn" href="https://wa.me/6282119027766?text=Halo%20Mirellon,%20saya%20tertarik%20untuk%20memesan%20Deep%20Horizon" target="_blank" rel="noopener" class="btn btn-gold wheel-buy-btn">Order via WhatsApp <span>↗</span></a>
+              <a href="contact.html" class="wheel-consult-link">Need a consultation?</a>
+            </div>
           </div>
         </div>
         
