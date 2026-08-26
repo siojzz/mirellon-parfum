@@ -565,7 +565,7 @@ window.MIRELLON_CONFIG.marketplace = {
       const x = (e.clientX / window.innerWidth - 0.5) * 15; // Max 15px move
       const y = (e.clientY / window.innerHeight - 0.5) * 15;
       // We apply via custom properties so it doesn't override the CSS animations
-      heroVisual.style.setProperty('--parallax-x', \px\);
-      heroVisual.style.setProperty('--parallax-y', \px\);
+      heroVisual.style.setProperty('--parallax-x', x + 'px');
+      heroVisual.style.setProperty('--parallax-y', y + 'px');
     });
   }
