@@ -17,24 +17,10 @@
     "(hover: hover) and (pointer: fine)"
   ).matches;
 
-  /* ---------- Product Image — Reveal Sequencing ---------- */
-  const editorialImg = hero.querySelector(".editorial-artwork-img");
-
-  if (editorialImg) {
-    // After initial CSS reveal animation completes, add the floating class
-    editorialImg.addEventListener("animationend", function handler(e) {
-      if (e.animationName === "heroImageReveal") {
-        editorialImg.removeEventListener("animationend", handler);
-
-        if (!prefersReducedMotion) {
-          // Small delay before starting ambient floating
-          setTimeout(() => {
-            editorialImg.classList.add("hero-floating");
-          }, 400);
-        }
-      }
-    });
-  }
+  /* Supports the active collection hero and the earlier editorial markup. */
+  const editorialImg = hero.querySelector(
+    ".hero-collection-media img, .editorial-artwork-img"
+  );
 
   /* Skip interactive effects on touch devices or reduced motion */
   if (!hasHover || prefersReducedMotion) return;
@@ -58,12 +44,8 @@
       editorialImg.style.setProperty("--parallax-x", `${currentX}px`);
       editorialImg.style.setProperty("--parallax-y", `${currentY}px`);
 
-      // Direct transform for smoother feel when not using CSS animation
-      if (!editorialImg.classList.contains("hero-floating") &&
-          !editorialImg.classList.contains("hero-active")) {
-        editorialImg.style.transform =
-          `translate(${currentX}px, ${currentY}px) scale(1)`;
-      }
+      editorialImg.style.transform =
+        `translate3d(${currentX}px, ${currentY}px, 0) scale(1.015)`;
 
       rafId = requestAnimationFrame(updateParallax);
     }

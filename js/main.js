@@ -125,21 +125,164 @@ window.MIRELLON_CONFIG.marketplace = {
     revealTargets.forEach((el) => el.classList.add("in-view"));
   }
 
-  /* ---------- Contact Form (client-side demo submit) ---------- */
+  /* ---------- Contact Form: validation + WhatsApp handoff ---------- */
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
+    const status = document.getElementById("form-status");
+    const toast = document.getElementById("contact-toast");
+    const toastClose = toast ? toast.querySelector(".contact-toast-close") : null;
+    const submitButton = contactForm.querySelector(".contact-submit-btn");
+    const submitLabel = contactForm.querySelector(".contact-submit-label");
+    const fields = {
+      name: contactForm.querySelector('[name="name"]'),
+      email: contactForm.querySelector('[name="email"]'),
+      subject: contactForm.querySelector('[name="subject"]'),
+      message: contactForm.querySelector('[name="message"]'),
+    };
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    let toastTimer = null;
+
+    function getFieldError(field) {
+      const value = field.value.trim();
+      if (!value) {
+        const emptyMessages = {
+          name: "Nama wajib diisi.",
+          email: "Email wajib diisi.",
+          subject: "Subjek wajib diisi.",
+          message: "Pesan wajib diisi.",
+        };
+        return emptyMessages[field.name] || "Kolom ini wajib diisi.";
+      }
+      if (field.name === "name" && value.length < 2) return "Nama minimal 2 karakter.";
+      if (field.name === "email" && !emailPattern.test(value)) return "Format email belum benar.";
+      if (field.name === "subject" && value.length < 3) return "Subjek minimal 3 karakter.";
+      if (field.name === "message" && value.length < 10) return "Pesan minimal 10 karakter.";
+      return "";
+    }
+
+    function setFieldState(field, errorMessage) {
+      const fieldWrap = field.closest(".field");
+      const error = document.getElementById(field.getAttribute("aria-describedby"));
+      const hasError = Boolean(errorMessage);
+
+      field.setAttribute("aria-invalid", String(hasError));
+      if (fieldWrap) {
+        fieldWrap.classList.toggle("has-error", hasError);
+        fieldWrap.classList.toggle("has-valid", !hasError && Boolean(field.value.trim()));
+      }
+      if (error) error.textContent = errorMessage;
+      return !hasError;
+    }
+
+    function validateField(field) {
+      return setFieldState(field, getFieldError(field));
+    }
+
+    function hideToast() {
+      if (!toast) return;
+      toast.classList.remove("show");
+      window.setTimeout(() => {
+        if (!toast.classList.contains("show")) toast.hidden = true;
+      }, 280);
+    }
+
+    function showToast() {
+      if (!toast) return;
+      window.clearTimeout(toastTimer);
+      toast.hidden = false;
+      window.requestAnimationFrame(() => toast.classList.add("show"));
+      toastTimer = window.setTimeout(hideToast, 6500);
+    }
+
+    Object.values(fields).forEach((field) => {
+      if (!field) return;
+      field.addEventListener("blur", () => {
+        field.dataset.touched = "true";
+        validateField(field);
+      });
+      field.addEventListener("input", () => {
+        if (field.dataset.touched === "true" || field.getAttribute("aria-invalid") === "true") {
+          validateField(field);
+        }
+      });
+    });
+
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const status = document.getElementById("form-status");
-      const nameField = contactForm.querySelector('[name="name"]');
-      const name = nameField ? nameField.value.trim() : "";
-      if (status) {
-        status.textContent = name
-          ? `Terima kasih, ${name}! Pesan Anda telah kami terima.`
-          : "Terima kasih! Pesan Anda telah kami terima.";
+
+      const fieldList = Object.values(fields).filter(Boolean);
+      fieldList.forEach((field) => {
+        field.dataset.touched = "true";
+      });
+      const isValid = fieldList.map(validateField).every(Boolean);
+
+      if (!isValid) {
+        const firstInvalid = fieldList.find((field) => field.getAttribute("aria-invalid") === "true");
+        if (firstInvalid) firstInvalid.focus();
+        if (status) {
+          status.className = "form-status is-error";
+          status.textContent = "Mohon periksa kembali kolom yang ditandai.";
+        }
+        return;
       }
-      contactForm.reset();
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.classList.add("is-loading");
+        submitButton.setAttribute("aria-busy", "true");
+      }
+      if (submitLabel) submitLabel.textContent = "Menyiapkan WhatsApp";
+      if (status) {
+        status.className = "form-status is-loading";
+        status.textContent = "Sedang menyiapkan pesan Anda...";
+      }
+
+      const whatsappNumber = contactForm.dataset.whatsappNumber || "6282119027766";
+      const whatsappMessage = [
+        "Halo Mirellon Parfum,",
+        "",
+        "Nama: " + fields.name.value.trim(),
+        "Email: " + fields.email.value.trim(),
+        "Subjek: " + fields.subject.value.trim(),
+        "",
+        "Pesan:",
+        fields.message.value.trim(),
+      ].join("\n");
+      const whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(whatsappMessage);
+      const whatsappWindow = window.open("", "_blank");
+      if (whatsappWindow) whatsappWindow.opener = null;
+
+      window.setTimeout(() => {
+        if (whatsappWindow && !whatsappWindow.closed) {
+          whatsappWindow.location.replace(whatsappUrl);
+        } else {
+          window.location.href = whatsappUrl;
+        }
+
+        if (status) {
+          status.className = "form-status is-success";
+          status.textContent = "WhatsApp telah dibuka. Silakan periksa lalu kirim pesan Anda.";
+        }
+        showToast();
+        contactForm.reset();
+        fieldList.forEach((field) => {
+          delete field.dataset.touched;
+          field.setAttribute("aria-invalid", "false");
+          const fieldWrap = field.closest(".field");
+          if (fieldWrap) fieldWrap.classList.remove("has-error", "has-valid");
+          const error = document.getElementById(field.getAttribute("aria-describedby"));
+          if (error) error.textContent = "";
+        });
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.classList.remove("is-loading");
+          submitButton.removeAttribute("aria-busy");
+        }
+        if (submitLabel) submitLabel.textContent = "Kirim Pesan";
+      }, 550);
     });
+
+    if (toastClose) toastClose.addEventListener("click", hideToast);
   }
 
   /* ---------- Notes / Blog: Search, Category Filter, Pagination ---------- */
@@ -405,12 +548,18 @@ window.MIRELLON_CONFIG.marketplace = {
     const steps = quizWrap.querySelectorAll(".quiz-step");
     const progressFill = quizWrap.querySelector(".quiz-progress-fill");
     const stepCountEl = quizWrap.querySelector(".quiz-current-step");
+    const totalStepsEl = quizWrap.querySelector(".quiz-total-steps");
     const resultCard = quizWrap.querySelector(".quiz-result-card");
     const quizBody = quizWrap.querySelector(".quiz-body");
     const restartBtn = quizWrap.querySelector(".quiz-restart-btn");
+    const quizContainer = quizWrap.querySelector(".quiz-container");
+    const quizOptions = Array.from(quizWrap.querySelectorAll(".quiz-option"));
 
+    const totalSteps = steps.length;
+    const maxScorePerStep = 3;
+    const transitionDelay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280;
     let currentStep = 1;
-    const answers = { persona: "", occasion: "", notes: "" };
+    let quizLocked = false;
 
     const quizRecommendations = {
       "deep-horizon": {
@@ -449,35 +598,102 @@ window.MIRELLON_CONFIG.marketplace = {
         tiktok: "https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV",
         waText: "Halo Mirellon Parfum, hasil kuis Scent Finder saya adalah Fleur Voyage. Saya ingin memesan parfum ini.",
       },
+      "golden-valor": {
+        name: "Golden Valor",
+        gender: "Unisex / Statement",
+        category: "Fruity Amber Woody",
+        notes: "Top: Plum, Ozonic Notes, Grapefruit, Bergamot • Middle: Hazelnut, Honey, Cedar, Cashmere Wood, Orange Blossom, Jasmine • Base: Amberwood, Patchouli, Vetiver, Oakmoss",
+        desc: "Komposisi plum, honey, dan amberwood yang kaya dengan struktur woody-earthy. Berani, mewah, dan ideal untuk momen yang membutuhkan kehadiran kuat.",
+        image: "images/golden-ember.png",
+        match: "98% Match",
+        tokopedia: "https://tk.tokopedia.com/ZSVDJ2eSw/",
+        tiktok: "https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV",
+        waText: "Halo Mirellon Parfum, hasil kuis Scent Finder saya adalah Golden Valor. Saya ingin memesan parfum ini.",
+      },
+      mystic: {
+        name: "Mystic",
+        gender: "Unisex / Intense",
+        category: "Oud Amber Resinous",
+        notes: "Top: Agarwood Oud, Rose, Incense, Raspberry, Saffron • Middle: Amberwood, Benzoin, Birch • Base: Geranium",
+        desc: "Oud, incense, saffron, dan amberwood membentuk aroma gelap yang artistik. Cocok untuk karakter misterius yang menyukai jejak smoky dan resinous.",
+        image: "images/mystic.png",
+        match: "98% Match",
+        tokopedia: "https://tk.tokopedia.com/ZSVDJ2eSw/",
+        tiktok: "https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV",
+        waText: "Halo Mirellon Parfum, hasil kuis Scent Finder saya adalah Mystic. Saya ingin memesan parfum ini.",
+      },
+      lust: {
+        name: "Lust",
+        gender: "Unisex / Sensual",
+        category: "Fruity Floral Gourmand",
+        notes: "Top: Star Fruit, Italian Mandarin, Boysenberry • Middle: Lotus, Star Jasmine • Base: Vanilla, Caramelized Pear, Musk, Woody Notes",
+        desc: "Buah-buahan cerah bertemu lotus, jasmine, vanilla, dan caramelized pear. Playful, hangat, dan sensual dengan dry-down yang menggoda.",
+        image: "images/ocean-breeze.png",
+        match: "98% Match",
+        tokopedia: "https://tk.tokopedia.com/ZSVDJ2eSw/",
+        tiktok: "https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV",
+        waText: "Halo Mirellon Parfum, hasil kuis Scent Finder saya adalah Lust. Saya ingin memesan parfum ini.",
+      },
+      "pear-blanche": {
+        name: "Pear Blanche",
+        gender: "Unisex / Elegant",
+        category: "Fruity Floral Musk",
+        notes: "Top: King William Pear, Melon • Middle: Freesia, Rose • Base: Patchouli, Amber, Musk, Rhubarb",
+        desc: "Pear dan melon yang juicy berpadu dengan freesia, rose, serta dasar patchouli-amber. Segar, polished, dan mudah dikenakan setiap hari.",
+        image: "images/silk-petal.png",
+        match: "98% Match",
+        tokopedia: "https://tk.tokopedia.com/ZSVDJ2eSw/",
+        tiktok: "https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV",
+        waText: "Halo Mirellon Parfum, hasil kuis Scent Finder saya adalah Pear Blanche. Saya ingin memesan parfum ini.",
+      },
+      aura: {
+        name: "Aura",
+        gender: "Unisex / Minimal",
+        category: "Citrus Green Musk",
+        notes: "Top: Citruses • Middle: Green Notes, Rose • Base: Musk",
+        desc: "Citrus, green notes, rose, dan musk dalam komposisi minimal yang bersih. Ringan, modern, dan terasa personal sebagai signature sehari-hari.",
+        image: "images/velvet-noir.png",
+        match: "98% Match",
+        tokopedia: "https://tk.tokopedia.com/ZSVDJ2eSw/",
+        tiktok: "https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV",
+        waText: "Halo Mirellon Parfum, hasil kuis Scent Finder saya adalah Aura. Saya ingin memesan parfum ini.",
+      },
     };
+
+    let scores = Object.fromEntries(
+      Object.keys(quizRecommendations).map((productId) => [productId, 0])
+    );
 
     function updateStepUI() {
       steps.forEach((step) => {
         const stepNum = parseInt(step.dataset.step, 10);
-        step.classList.toggle("active", stepNum === currentStep);
+        const isActive = stepNum === currentStep;
+        step.classList.toggle("active", isActive);
+        step.setAttribute("aria-hidden", String(!isActive));
       });
-      if (progressFill) progressFill.style.width = ((currentStep - 1) / 3) * 100 + "%";
+      quizOptions.forEach((option) => {
+        option.classList.remove("is-selected");
+        option.setAttribute("aria-pressed", "false");
+      });
+      if (progressFill) progressFill.style.width = (currentStep / totalSteps) * 100 + "%";
       if (stepCountEl) stepCountEl.textContent = currentStep;
+      if (totalStepsEl) totalStepsEl.textContent = totalSteps;
     }
 
     function calculateMatch() {
-      // Logic mapping based on user responses
-      if (answers.persona === "men" || answers.notes === "woody") {
-        return "deep-horizon";
-      } else if (answers.persona === "women" && (answers.notes === "floral" || answers.occasion === "romantic")) {
-        return "floral-kiss";
-      } else {
-        return "fleur-voyage";
-      }
+      const [productId, score] = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
+      return { productId, score };
     }
 
-    function showResult(productId) {
+    function showResult(productId, score) {
       const data = quizRecommendations[productId] || quizRecommendations["fleur-voyage"];
+      const maxPossibleScore = totalSteps * maxScorePerStep;
+      const matchPercentage = Math.min(99, 84 + Math.round((score / maxPossibleScore) * 15));
       if (progressFill) progressFill.style.width = "100%";
       quizBody.style.display = "none";
       resultCard.style.display = "block";
 
-      resultCard.querySelector(".result-match-badge").textContent = data.match;
+      resultCard.querySelector(".result-match-badge").textContent = `${matchPercentage}% Match`;
       resultCard.querySelector(".result-img").src = data.image;
       resultCard.querySelector(".result-img").alt = data.name;
       resultCard.querySelector(".result-category").textContent = data.category;
@@ -497,36 +713,52 @@ window.MIRELLON_CONFIG.marketplace = {
       resultCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
-    quizWrap.querySelectorAll(".quiz-option").forEach((opt) => {
+    quizOptions.forEach((opt) => {
+      opt.setAttribute("aria-pressed", "false");
       opt.addEventListener("click", () => {
         const stepNum = parseInt(opt.closest(".quiz-step").dataset.step, 10);
-        const val = opt.dataset.val;
+        if (stepNum !== currentStep || quizLocked) return;
 
-        if (stepNum === 1) answers.persona = val;
-        if (stepNum === 2) answers.occasion = val;
-        if (stepNum === 3) answers.notes = val;
+        quizLocked = true;
+        if (quizContainer) quizContainer.classList.add("is-busy");
+        opt.classList.add("is-selected");
+        opt.setAttribute("aria-pressed", "true");
 
-        if (currentStep < 3) {
-          currentStep++;
-          updateStepUI();
-        } else {
-          const matchId = calculateMatch();
-          showResult(matchId);
-        }
+        window.setTimeout(() => {
+          (opt.dataset.scores || "").split(",").forEach((entry) => {
+            const [productId, value] = entry.split(":");
+            if (productId in scores) scores[productId] += Number(value) || 0;
+          });
+
+          if (currentStep < totalSteps) {
+            currentStep++;
+            updateStepUI();
+          } else {
+            const match = calculateMatch();
+            showResult(match.productId, match.score);
+          }
+
+          quizLocked = false;
+          if (quizContainer) quizContainer.classList.remove("is-busy");
+        }, transitionDelay);
       });
     });
 
     if (restartBtn) {
       restartBtn.addEventListener("click", () => {
         currentStep = 1;
-        answers.persona = "";
-        answers.occasion = "";
-        answers.notes = "";
+        scores = Object.fromEntries(
+          Object.keys(quizRecommendations).map((productId) => [productId, 0])
+        );
         quizBody.style.display = "block";
         resultCard.style.display = "none";
+        quizLocked = false;
+        if (quizContainer) quizContainer.classList.remove("is-busy");
         updateStepUI();
       });
     }
+
+    updateStepUI();
   }
   initScentQuiz();
 

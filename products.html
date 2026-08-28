@@ -18,18 +18,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=abc2">
+  <link rel="stylesheet" href="css/style.css?v=atelier3">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/animation.css">
-  <link rel="stylesheet" href="css/premium.css">
+  <link rel="stylesheet" href="css/premium.css?v=brand1">
 </head>
 <body class="shop-page">
   <a class="skip-link" href="#main">Lompat ke konten utama</a>
-  <div id="loading-screen" aria-hidden="true"><span class="loader-mark">MIRELLON</span></div>
+  <div id="loading-screen" aria-hidden="true"><span class="loader-mark">Mirellon<span class="brand-dot">.</span></span></div>
 
   <header class="site-header solid shop-header" data-transparent-hero="false">
     <div class="container">
-      <a href="index.html" class="logo luxury-logo">M I R E L L O N</a>
+      <a href="index.html" class="logo luxury-logo" aria-label="Mirellon Home">Mirellon<span class="brand-dot">.</span></a>
       <nav class="main-nav" aria-label="Navigasi utama">
         <ul class="nav-links">
           <li><a class="nav-link" href="index.html">Home</a></li>
@@ -39,7 +39,6 @@
           <li><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
         <div class="header-actions">
-          
           <a href="#products" class="btn btn-outline desktop-only">Shop Now</a>
           <button class="hamburger" aria-label="Buka menu" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
         </div>
@@ -48,6 +47,7 @@
   </header>
 
   <div class="mobile-nav" id="mobile-nav">
+    <a class="mobile-wordmark" href="index.html" aria-label="Mirellon Home">Mirellon<span class="brand-dot">.</span></a>
     <button class="close-btn" aria-label="Tutup menu">&times;</button>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -57,137 +57,79 @@
   </div>
 
   <main id="main">
+    <section
+      class="olfactory-showcase"
+      id="products"
+      data-product="deep-horizon"
+      style="--scent-base:#0b1013;--scent-glow:rgba(99,139,153,.28);--scent-warm:rgba(191,151,82,.18);--scent-line:rgba(184,205,211,.12);">
 
-    <!-- SHOP HERO -->
-    
-    <!-- TIKTOK STRIDE AURORA STYLE WHEEL HERO -->
-    
-    <!-- TIKTOK STRIDE AURORA STYLE WHEEL HERO -->
-    <section class="wheel-hero">
-      <div class="wheel-ambient-glow" aria-hidden="true"></div>
-      <div class="wheel-edition-mark" aria-hidden="true">MIRELLON / OLFACTORY EDITIONS</div>
-      <div class="wheel-container">
-        
-        <div class="wheel-left">
-          <div class="img-slider" id="img-slider" style="transform: rotate(0deg); transition: transform 0.8s ease-in-out !important;">
-            <div class="img-item active" style="--i:0; transition: all 0.5s ease-in-out !important;"><img src="images/deep-horizon.png" alt="Deep Horizon"></div>
-            <div class="img-item" style="--i:1; transition: all 0.5s ease-in-out !important;"><img src="images/floral-kiss.png" alt="Floral Kiss"></div>
-            <div class="img-item" style="--i:2; transition: all 0.5s ease-in-out !important;"><img src="images/fleur-voyage.png" alt="Fleur Voyage"></div>
-            <div class="img-item" style="--i:3; transition: all 0.5s ease-in-out !important;"><img src="images/golden-ember.png" alt="Golden Valor"></div>
-            <div class="img-item" style="--i:4; transition: all 0.5s ease-in-out !important;"><img src="images/mystic.png" alt="Mystic"></div>
-            <div class="img-item" style="--i:5; transition: all 0.5s ease-in-out !important;"><img src="images/ocean-breeze.png" alt="Lust"></div>
-            <div class="img-item" style="--i:6; transition: all 0.5s ease-in-out !important;"><img src="images/silk-petal.png" alt="Pear Blanche"></div>
-            <div class="img-item" style="--i:7; transition: all 0.5s ease-in-out !important;"><img src="images/velvet-noir.png" alt="Aura"></div>
-          </div>
-          
-          <div class="wheel-controls">
-            <button id="wheel-prev" class="icon-btn" aria-label="Produk sebelumnya">←</button>
-            <div class="wheel-position" aria-live="polite"><span id="wheel-current">01</span><i></i><span>08</span></div>
-            <button id="wheel-next" class="icon-btn" aria-label="Produk berikutnya">→</button>
-          </div>
-        </div>
-        
-        <div class="wheel-right">
-          <div class="info-item" id="wheel-info-card">
-            <span class="wheel-collection">The Signature Collection · No. <b id="wheel-number">01</b></span>
-            <h2 class="wheel-title" id="wheel-title">Deep Horizon</h2>
-            <p class="wheel-family" id="wheel-family">Fresh Woody</p>
-            <p class="wheel-desc" id="wheel-desc">Parfum pria dengan aroma fresh yang maskulin dan elegan.</p>
+      <div class="scent-atmosphere" aria-hidden="true"></div>
 
-            <div class="wheel-notes" aria-label="Komposisi aroma">
-              <span><small>TOP</small><strong id="wheel-top">Bergamot</strong></span>
-              <span><small>HEART</small><strong id="wheel-heart">Lavender</strong></span>
-              <span><small>BASE</small><strong id="wheel-base">Cedarwood</strong></span>
+      <div class="product-showcase-grid">
+        <div class="product-stage" id="product-stage">
+          <p class="product-edition-mark">MIRELLON / OLFACTORY EDITIONS</p>
+
+          <button type="button" class="product-art" id="product-art" aria-label="Tampilkan aroma berikutnya">
+            <span class="product-art-number" id="product-art-number" aria-hidden="true">01</span>
+            <div class="product-art-halo" aria-hidden="true"></div>
+            <img
+              id="showcase-product-image"
+              src="images/deep-horizon.png"
+              alt="Kemasan Mirellon Deep Horizon Eau de Parfum"
+              width="768"
+              height="1200"
+              loading="eager"
+              fetchpriority="high">
+            <span class="product-art-caption" id="product-art-caption">35 ML · FRESH WOODY</span>
+          </button>
+
+          <div class="showcase-controls">
+            <button id="wheel-prev" class="showcase-arrow" aria-label="Aroma sebelumnya">←</button>
+            <div class="showcase-position" aria-live="polite">
+              <strong id="wheel-current">01</strong>
+              <i></i>
+              <span>08</span>
             </div>
-
-            <div class="wheel-purchase-row">
-              <div>
-                <small>35 ML · EAU DE PARFUM</small>
-                <p class="wheel-price" id="wheel-price">Rp 79.000</p>
-              </div>
-              <span class="wheel-longevity">8–12 HOURS</span>
-            </div>
-
-            <div class="wheel-actions">
-              <a id="wheel-buy-btn" href="https://wa.me/6282119027766?text=Halo%20Mirellon,%20saya%20tertarik%20untuk%20memesan%20Deep%20Horizon" target="_blank" rel="noopener" class="btn btn-gold wheel-buy-btn">Order via WhatsApp <span>↗</span></a>
-              <a href="contact.html" class="wheel-consult-link">Need a consultation?</a>
-            </div>
+            <button id="wheel-next" class="showcase-arrow" aria-label="Aroma berikutnya">→</button>
           </div>
         </div>
-        
+
+        <article class="product-story-panel" id="wheel-info-card" aria-live="polite">
+          <h1 class="wheel-title" id="wheel-title">Deep Horizon</h1>
+          <p class="wheel-family" id="wheel-family">Fresh Woody</p>
+          <p class="wheel-desc" id="wheel-desc">Komposisi segar dan maskulin dengan kedalaman kayu yang tenang—dirancang untuk kehadiran yang tegas tanpa terasa berlebihan.</p>
+
+          <div class="wheel-notes" aria-label="Komposisi aroma">
+            <span><small>TOP</small><strong id="wheel-top">Citrus, Bergamot</strong></span>
+            <span><small>HEART</small><strong id="wheel-heart">Lavender, Geranium</strong></span>
+            <span><small>BASE</small><strong id="wheel-base">Amber, Cedarwood</strong></span>
+          </div>
+
+          <div class="wheel-purchase-row">
+            <div>
+              <small>35 ML · EAU DE PARFUM</small>
+              <p class="wheel-price" id="wheel-price">Rp 79.000</p>
+            </div>
+            <span class="wheel-longevity">8–12 HOURS</span>
+          </div>
+
+          <div class="wheel-actions">
+            <a id="wheel-buy-btn" href="https://wa.me/6282119027766?text=Halo%20Mirellon,%20saya%20ingin%20memesan%20Deep%20Horizon" target="_blank" rel="noopener" class="btn btn-gold wheel-buy-btn btn-magnetic">Order via WhatsApp <span>↗</span></a>
+            <a href="contact.html" class="wheel-consult-link">Need a consultation?</a>
+          </div>
+
+          <div class="variant-rail" id="variant-rail" role="tablist" aria-label="Pilih aroma Mirellon"></div>
+        </article>
       </div>
     </section>
-
-    </main>
-
-  <!-- Marketplace Popup -->
-  <div class="overlay" id="marketplace-popup" role="dialog" aria-modal="true" aria-label="Pilih marketplace">
-    <div class="popup">
-      <h3>Beli di Marketplace</h3>
-      <p>Pilih platform favorit Anda untuk melanjutkan pembelian.</p>
-      <div class="marketplace-list">
-        <button class="marketplace-btn" data-store="shopee">Shopee <span aria-hidden="true">→</span></button>
-        <button class="marketplace-btn" data-store="tokopedia">Tokopedia <span aria-hidden="true">→</span></button>
-        <button class="marketplace-btn" data-store="tiktok">TikTok Shop <span aria-hidden="true">→</span></button>
-      </div>
-      <button class="popup-close" data-close>Batal</button>
-    </div>
-  </div>
-
-    <!-- Product Detail Modal -->
-  <div class="overlay" id="product-modal" role="dialog" aria-modal="true" aria-label="Detail produk">
-    <div class="modal-box">
-      <button class="modal-close-x" data-close aria-label="Tutup">&times;</button>
-      <div class="modal-content">
-        <div class="product-media modal-media">
-          <img src="images/deep-horizon.png" alt="" loading="lazy">
-        </div>
-        <div class="modal-details-col">
-          <div class="modal-category eyebrow"></div>
-          <h3 class="modal-title"></h3>
-          
-          <div class="modal-size-picker">
-            <span class="size-label">Pilih Ukuran:</span>
-            <div class="size-chips">
-              <button class="size-chip active" data-size="35ml">35ml (Rp 79.000)</button>
-              <button class="size-chip" data-size="50ml">50ml (Rp 119.000)</button>
-            </div>
-          </div>
-
-          <div class="modal-price-box">
-            <span class="price-caption">Harga:</span>
-            <strong class="modal-selected-price">Rp 79.000</strong>
-          </div>
-
-          <div class="modal-notes">
-            <div><strong>Top Notes:</strong> <span class="modal-top"></span></div>
-            <div><strong>Middle Notes:</strong> <span class="modal-middle"></span></div>
-            <div><strong>Base Notes:</strong> <span class="modal-base"></span></div>
-          </div>
-          <p class="modal-desc"></p>
-
-          <div class="modal-direct-actions">
-            <a href="#" class="btn btn-gold modal-btn-wa" target="_blank" rel="noopener">
-              <span>Order via WhatsApp</span>
-            </a>
-            <a href="https://tk.tokopedia.com/ZSVDJ2eSw/" class="btn btn-outline modal-btn-tokopedia" target="_blank" rel="noopener">
-              <span>Tokopedia</span>
-            </a>
-            <a href="https://www.tiktok.com/@mirellon_parfum?_r=1&_t=ZS-991wJdPSrNV" class="btn btn-outline modal-btn-tiktok" target="_blank" rel="noopener">
-              <span>TikTok Shop</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </main>
 
   <!-- Floating WhatsApp Quick Order Widget -->
   <aside class="floating-wa-wrap" aria-label="Konsultasi WhatsApp">
-    <a href="https://wa.me/6282119027766?text=Halo%20Mirellon%20Parfum,%20saya%20tertarik%20untuk%20konsultasi%20dan%20memesan%20parfum." 
-       class="floating-wa-btn" 
-       target="_blank" 
-       rel="noopener" 
+    <a href="https://wa.me/6282119027766?text=Halo%20Mirellon%20Parfum,%20saya%20tertarik%20untuk%20konsultasi%20dan%20memesan%20parfum."
+       class="floating-wa-btn"
+       target="_blank"
+       rel="noopener"
        aria-label="Chat WhatsApp Admin Mirellon">
       <span class="wa-ripple" aria-hidden="true"></span>
       <svg class="wa-icon" viewBox="0 0 24 24" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -199,8 +141,7 @@
 
   <button class="back-to-top" aria-label="Kembali ke atas">&#8593;</button>
 
-  <script src="js/main.js"></script>
-  
-  <script src="js/wheel.js?v=abc2"></script>
+  <script src="js/main.js?v=refine1"></script>
+  <script src="js/wheel.js?v=repair2"></script>
 </body>
 </html>

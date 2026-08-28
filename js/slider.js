@@ -13,14 +13,22 @@
   const dotsWrap = document.querySelector(".reviews-dots");
   const prevBtn = document.querySelector(".reviews-nav .prev");
   const nextBtn = document.querySelector(".reviews-nav .next");
+  const currentEl = document.querySelector(".reviews-current");
+  const totalEl = document.querySelector(".reviews-total");
+  const slider = document.querySelector(".reviews-slider");
 
   let index = 0;
   let autoTimer = null;
   const AUTO_DELAY = 5500;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (totalEl) totalEl.textContent = String(slides.length).padStart(2, "0");
 
   if (dotsWrap) {
     slides.forEach((_, i) => {
-      const dot = document.createElement("span");
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Tampilkan ulasan ${i + 1}`);
       if (i === 0) dot.classList.add("active");
       dot.addEventListener("click", () => goTo(i));
       dotsWrap.appendChild(dot);
@@ -36,6 +44,12 @@
 
   function render() {
     track.style.transform = `translateX(-${index * 100}%)`;
+    slides.forEach((slide, i) => {
+      const isActive = i === index;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", String(!isActive));
+    });
+    if (currentEl) currentEl.textContent = String(index + 1).padStart(2, "0");
     updateDots();
   }
 
@@ -53,8 +67,27 @@
 
   function restartAuto() {
     if (autoTimer) clearInterval(autoTimer);
+    if (reduceMotion || document.hidden) return;
     autoTimer = setInterval(next, AUTO_DELAY);
   }
+
+  function pauseAuto() {
+    if (!autoTimer) return;
+    clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  if (slider) {
+    slider.addEventListener("mouseenter", pauseAuto);
+    slider.addEventListener("mouseleave", restartAuto);
+    slider.addEventListener("focusin", pauseAuto);
+    slider.addEventListener("focusout", restartAuto);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) pauseAuto();
+    else restartAuto();
+  });
 
   /* Swipe support */
   let startX = 0;

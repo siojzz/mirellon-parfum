@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
     artNumber: document.getElementById("product-art-number"),
     artCaption: document.getElementById("product-art-caption"),
     current: document.getElementById("wheel-current"),
-    number: document.getElementById("wheel-number"),
     title: document.getElementById("wheel-title"),
     family: document.getElementById("wheel-family"),
     desc: document.getElementById("wheel-desc"),
@@ -222,7 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.artNumber.textContent = number;
     elements.artCaption.textContent = `35 ML · ${product.family.toUpperCase()}`;
     elements.current.textContent = number;
-    elements.number.textContent = number;
     elements.title.textContent = product.name;
     elements.family.textContent = product.family;
     elements.desc.textContent = product.desc;

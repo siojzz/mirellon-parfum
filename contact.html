@@ -21,15 +21,15 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/animation.css">
-  <link rel="stylesheet" href="css/premium.css">
+  <link rel="stylesheet" href="css/premium.css?v=brand1">
 </head>
 <body>
   <a class="skip-link" href="#main">Lompat ke konten utama</a>
-  <div id="loading-screen" aria-hidden="true"><span class="loader-mark">MIRELLON</span></div>
+  <div id="loading-screen" aria-hidden="true"><span class="loader-mark">Mirellon<span class="brand-dot">.</span></span></div>
 
   <header class="site-header solid" data-transparent-hero="false">
     <div class="container">
-      <a href="index.html" class="logo luxury-logo">M I R E L L O N</a>
+      <a href="index.html" class="logo luxury-logo" aria-label="Mirellon Home">Mirellon<span class="brand-dot">.</span></a>
       <nav class="main-nav" aria-label="Navigasi utama">
         <ul class="nav-links">
           <li><a class="nav-link" href="index.html">Home</a></li>
@@ -48,6 +48,7 @@
   </header>
 
   <div class="mobile-nav" id="mobile-nav">
+    <a class="mobile-wordmark" href="index.html" aria-label="Mirellon Home">Mirellon<span class="brand-dot">.</span></a>
     <button class="close-btn" aria-label="Tutup menu">&times;</button>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -57,13 +58,13 @@
   </div>
 
   <main id="main">
-    <section class="page-hero">
+    <section class="page-hero page-hero-editorial page-hero-contact">
       <div class="hero-aurora" aria-hidden="true"></div>
       <div class="hero-ambient-glow" aria-hidden="true"></div>
       <div class="container">
-        <span class="eyebrow">Get In Touch</span>
-        <h1>Hubungi Mirellon</h1>
-        <p class="breadcrumb"><a href="index.html">Home</a> / Contact</p>
+        <div class="page-hero-layout">
+          <h1><span>Hubungi</span><em>Mirellon</em></h1>
+        </div>
       </div>
     </section>
 
@@ -75,67 +76,89 @@
           <p class="section-desc">Ada pertanyaan seputar produk atau ingin bekerja sama? Tim kami siap membantu Anda.</p>
 
           <div class="contact-info-list">
-            <div class="contact-info-item">
+            <a class="contact-info-item contact-info-link" href="https://www.google.com/maps/search/?api=1&amp;query=Jl.%20Gunung%20Pangrango%20No%2029%2C%20Bogor%2C%20Indonesia" target="_blank" rel="noopener" aria-label="Buka alamat Mirellon di Google Maps">
               <span class="icon-btn" aria-hidden="true">LOC</span>
-              <div>
+              <div class="contact-info-copy">
                 <h4>Alamat</h4>
                 <p>Jl. Gunung Pangrango No 29, Bogor, Indonesia</p>
               </div>
-            </div>
-            <div class="contact-info-item">
+              <span class="contact-info-action" aria-hidden="true">Buka Maps ↗</span>
+            </a>
+            <a class="contact-info-item contact-info-link" href="mailto:mirellonparfum@gmail.com" aria-label="Kirim email ke Mirellon">
               <span class="icon-btn" aria-hidden="true">EM</span>
-              <div>
+              <div class="contact-info-copy">
                 <h4>Email</h4>
-                <a href="mailto:mirellonparfum@gmail.com">mirellonparfum@gmail.com</a>
+                <p>mirellonparfum@gmail.com</p>
               </div>
-            </div>
-            <div class="contact-info-item">
+              <span class="contact-info-action" aria-hidden="true">Kirim Email ↗</span>
+            </a>
+            <a class="contact-info-item contact-info-link" href="https://wa.me/6282119027766" target="_blank" rel="noopener" aria-label="Mulai chat WhatsApp dengan Mirellon">
               <span class="icon-btn" aria-hidden="true">WA</span>
-              <div>
+              <div class="contact-info-copy">
                 <h4>WhatsApp</h4>
-                <a href="https://wa.me/6282119027766" target="_blank" rel="noopener">+62 821-1902-7766</a>
+                <p>+62 821-1902-7766</p>
               </div>
-            </div>
-            <div class="contact-info-item">
+              <span class="contact-info-action" aria-hidden="true">Mulai Chat ↗</span>
+            </a>
+            <a class="contact-info-item contact-info-link" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Buka Instagram Mirellon">
               <span class="icon-btn" aria-hidden="true">IG</span>
-              <div>
+              <div class="contact-info-copy">
                 <h4>Instagram</h4>
-                <a href="https://instagram.com" target="_blank" rel="noopener">@mirellonparfum</a>
+                <p>@mirellonparfum</p>
               </div>
-            </div>
-            <div class="contact-info-item">
+              <span class="contact-info-action" aria-hidden="true">Kunjungi ↗</span>
+            </a>
+            <a class="contact-info-item contact-info-link" href="https://tiktok.com" target="_blank" rel="noopener" aria-label="Buka TikTok Mirellon">
               <span class="icon-btn" aria-hidden="true">TT</span>
-              <div>
+              <div class="contact-info-copy">
                 <h4>TikTok</h4>
-                <a href="https://tiktok.com" target="_blank" rel="noopener">@mirellonparfum</a>
+                <p>@mirellonparfum</p>
               </div>
-            </div>
+              <span class="contact-info-action" aria-hidden="true">Kunjungi ↗</span>
+            </a>
           </div>
         </div>
 
         <div data-aos="fade-left">
-          <form class="contact-form" id="contact-form">
+          <form class="contact-form" id="contact-form" novalidate data-whatsapp-number="6282119027766">
             <div class="form-row">
               <div class="field">
                 <label for="name">Nama</label>
-                <input type="text" id="name" name="name" required autocomplete="name">
+                <input type="text" id="name" name="name" required minlength="2" autocomplete="name" aria-describedby="name-error" placeholder="Nama lengkap">
+                <span class="field-error" id="name-error" aria-live="polite"></span>
               </div>
               <div class="field">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required autocomplete="email">
+                <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-error" placeholder="nama@email.com">
+                <span class="field-error" id="email-error" aria-live="polite"></span>
               </div>
             </div>
             <div class="field">
               <label for="subject">Subjek</label>
-              <input type="text" id="subject" name="subject" required>
+              <input type="text" id="subject" name="subject" required minlength="3" aria-describedby="subject-error" placeholder="Contoh: Konsultasi aroma">
+              <span class="field-error" id="subject-error" aria-live="polite"></span>
             </div>
             <div class="field">
               <label for="message">Pesan</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <textarea id="message" name="message" rows="5" required minlength="10" aria-describedby="message-error" placeholder="Ceritakan kebutuhan atau pertanyaan Anda"></textarea>
+              <span class="field-error" id="message-error" aria-live="polite"></span>
             </div>
-            <button type="submit" class="btn btn-gold btn-magnetic">Kirim Pesan</button>
-            <p class="form-status" id="form-status" role="status"></p>
+            <button type="submit" class="btn btn-gold btn-magnetic contact-submit-btn">
+              <span class="contact-submit-label">Kirim Pesan</span>
+              <span class="contact-submit-spinner" aria-hidden="true"></span>
+            </button>
+            <p class="contact-form-note">Pesan akan disiapkan melalui WhatsApp. Anda tetap menekan tombol Kirim di WhatsApp.</p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
+
+          <div class="contact-toast" id="contact-toast" role="status" aria-live="polite" aria-atomic="true" hidden>
+            <span class="contact-toast-icon" aria-hidden="true">✓</span>
+            <div>
+              <strong>Pesan siap dikirim</strong>
+              <p>WhatsApp telah dibuka dengan pesan Anda.</p>
+            </div>
+            <button type="button" class="contact-toast-close" aria-label="Tutup notifikasi">×</button>
+          </div>
         </div>
       </div>
     </section>
@@ -219,7 +242,7 @@
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
-            <li>Jakarta, Indonesia</li>
+            <li>Bogor, Indonesia</li>
             <li><a href="mailto:mirellonparfum@gmail.com">mirellonparfum@gmail.com</a></li>
             <li><a href="https://wa.me/6282119027766">WhatsApp Kami</a></li>
           </ul>
@@ -249,6 +272,6 @@
 
   <button class="back-to-top" aria-label="Kembali ke atas">&#8593;</button>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=refine1"></script>
 </body>
 </html>
